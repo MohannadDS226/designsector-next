@@ -33,16 +33,39 @@ DS.initShapeTitle = function () {
 
   const isMobile = window.matchMedia('(max-width: 860px)').matches;
   const section = document.querySelector('.disciplines-section');
+  const layout = document.querySelector('.disciplines-layout');
+  const buttons = document.querySelectorAll('.discipline-list button');
+
   if (!section || isMobile) return;
+
+  gsap.set(layout, { opacity: 0, y: 120 });
+  gsap.set(buttons, { opacity: 0, y: 50 });
 
   gsap.timeline({
     scrollTrigger: {
       trigger: section,
-      start: 'top 48%',
-      end: 'top 10%',
-      scrub: true
+      start: 'top top',
+      end: '+=160%',
+      scrub: true,
+      pin: true
     }
   })
-    .fromTo('.shape-word-we', { x: 0 }, { x: '-15vw', ease: 'none' }, 0)
-    .fromTo('.shape-word-shape', { x: 0 }, { x: '15vw', ease: 'none' }, 0);
+    .fromTo('.shape-word-we', 
+      { x: 0, opacity: 1 }, 
+      { x: '-22vw', opacity: 0, ease: 'none' }, 
+      0.05
+    )
+    .fromTo('.shape-word-shape', 
+      { x: 0, opacity: 1 }, 
+      { x: '22vw', opacity: 0, ease: 'none' }, 
+      0.05
+    )
+    .to(layout, 
+      { opacity: 1, y: 0, ease: 'none' }, 
+      0.22
+    )
+    .to(buttons, 
+      { opacity: 1, y: 0, stagger: 0.04, ease: 'none' }, 
+      0.28
+    );
 };
