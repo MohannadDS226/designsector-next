@@ -1,5 +1,8 @@
 @media (prefers-reduced-motion:no-preference){
-  .intro-fallback,.featured-poster{transform:scale(1.04)}
-  .site-header,.brand-logo,.office-item,.works-list button,.discipline-list button,.contact-cta:before{will-change:transform,opacity}
+  .hero-media,.featured-poster{will-change:transform}
+  .manifesto-line,.shape-word,.featured-clips video,.works-preview img,.office-visual img{will-change:transform,opacity}
 }
-@media (prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}.site-loader{display:none}.reveal,.reveal-media{opacity:1!important;transform:none!important}}
+@media (prefers-reduced-motion:reduce){
+  *,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}
+  .site-loader{display:none}.reveal-up,.reveal-media{opacity:1!important;transform:none!important}.manifesto-menu{opacity:1!important;transform:none!important}
+}

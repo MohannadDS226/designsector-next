@@ -1,49 +1,47 @@
 window.DS = window.DS || {};
 
-window.DS.initVideoScrub = function () {
-  const stack = document.querySelector('[data-clip-scrub]');
-  const videos = stack ? Array.from(stack.querySelectorAll('.clip-video')) : [];
+DS.initClipScrub = function () {
+  const container = document.querySelector('[data-clip-scrub]');
+  if (!container) return;
 
-  if (!videos.length) return;
-
-  const isMobile = window.matchMedia('(max-width: 760px)').matches;
+  const videos = Array.from(container.querySelectorAll('video'));
+  const isMobile = window.matchMedia('(max-width: 860px)').matches;
+  let usableVideos = [];
 
   videos.forEach((video, index) => {
     const src = isMobile ? video.dataset.mobileSrc : video.dataset.desktopSrc;
     if (!src) return;
-
     video.src = src;
-    video.load();
-    video.dataset.index = String(index);
+    video.muted = true;
+    video.playsInline = true;
+    video.preload = 'metadata';
+    video.dataset.ready = 'false';
 
     video.addEventListener('loadedmetadata', () => {
-      video.classList.add('has-source');
-      if (index === 0) video.classList.add('is-active');
+      video.dataset.ready = 'true';
+      usableVideos = videos.filter((v) => v.dataset.ready === 'true' && Number.isFinite(v.duration) && v.duration > 0);
+      if (usableVideos.length && !container.classList.contains('is-ready')) {
+        container.classList.add('is-ready');
+        videos[0].classList.add('is-active');
+      }
+      if (window.ScrollTrigger) ScrollTrigger.refresh();
     });
 
     video.addEventListener('error', () => {
-      video.classList.remove('has-source');
+      video.dataset.ready = 'error';
+      usableVideos = videos.filter((v) => v.dataset.ready === 'true' && Number.isFinite(v.duration) && v.duration > 0);
+      if (!usableVideos.length) container.classList.add('no-video');
     });
   });
 
-  function activateVideo(activeIndex) {
-    videos.forEach((video, index) => {
-      video.classList.toggle('is-active', index === activeIndex);
-      if (index !== activeIndex) video.pause();
-    });
-  }
-
-  function setClipProgress(video, localProgress) {
-    if (!video || !video.duration || Number.isNaN(video.duration)) return;
-
-    const safeProgress = Math.min(Math.max(localProgress, 0), 1);
-    const targetTime = safeProgress * video.duration;
-
-    try {
-      video.currentTime = targetTime;
-    } catch (error) {
-      // Some browsers refuse currentTime before metadata is ready.
+  if (isMobile) {
+    const first = videos[0];
+    if (first) {
+      first.classList.add('is-active');
+      first.addEventListener('loadedmetadata', () => first.play().catch(() => {}), { once: true });
+      first.loop = true;
     }
+    return;
   }
 
   if (!window.gsap || !window.ScrollTrigger) return;
@@ -53,55 +51,65 @@ window.DS.initVideoScrub = function () {
     start: 'top top',
     end: 'bottom bottom',
     scrub: true,
-    onUpdate: (self) => {
-      const totalClips = videos.length;
-      const rawIndex = Math.floor(self.progress * totalClips);
-      const activeIndex = Math.min(rawIndex, totalClips - 1);
-      const segmentSize = 1 / totalClips;
-      const segmentStart = activeIndex * segmentSize;
-      const localProgress = (self.progress - segmentStart) / segmentSize;
-      const activeVideo = videos[activeIndex];
-
-      activateVideo(activeIndex);
-      setClipProgress(activeVideo, localProgress);
-    },
+    onUpdate: (self) => scrubTo(self.progress)
   });
+
+  function scrubTo(progress) {
+    const ready = videos.filter((v) => v.dataset.ready === 'true' && Number.isFinite(v.duration) && v.duration > 0);
+    if (!ready.length) return;
+
+    const count = ready.length;
+    const raw = Math.min(progress * count, count - 0.0001);
+    const index = Math.floor(raw);
+    const segmentProgress = raw - index;
+    const active = ready[index];
+
+    ready.forEach((video, i) => video.classList.toggle('is-active', i === index));
+
+    const targetTime = Math.max(0, Math.min(active.duration - 0.04, segmentProgress * active.duration));
+    try {
+      if (Math.abs(active.currentTime - targetTime) > 0.08) active.currentTime = targetTime;
+    } catch (error) {}
+  }
 };
 
-window.DS.initDisciplinePreviews = function () {
+DS.initDisciplinePreviews = function () {
   const preview = document.querySelector('[data-discipline-preview]');
-  const buttons = document.querySelectorAll('.discipline-list [data-image]');
+  const buttons = document.querySelectorAll('[data-discipline-list] button');
+  if (!preview || !buttons.length) return;
 
-  buttons.forEach((btn) => {
-    btn.addEventListener('mouseenter', () => {
-      buttons.forEach((b) => b.classList.remove('is-active'));
-      btn.classList.add('is-active');
-      if (preview) preview.style.backgroundImage = `url('${btn.dataset.image}')`;
-    });
+  buttons.forEach((button) => {
+    button.addEventListener('mouseenter', () => activate(button));
+    button.addEventListener('focus', () => activate(button));
   });
+
+  function activate(button) {
+    buttons.forEach((b) => b.classList.remove('is-active'));
+    button.classList.add('is-active');
+    preview.style.backgroundImage = `url('${button.dataset.image}')`;
+  }
 };
 
-window.DS.initWorks = function () {
+DS.initWorks = function () {
   const preview = document.querySelector('[data-works-preview]');
   const meta = document.querySelector('[data-works-meta]');
   const buttons = document.querySelectorAll('[data-works-list] button');
+  if (!preview || !meta || !buttons.length) return;
 
-  buttons.forEach((btn) => {
-    btn.addEventListener('mouseenter', () => {
-      buttons.forEach((b) => b.classList.remove('is-active'));
-      btn.classList.add('is-active');
-
-      if (preview) {
-        preview.style.opacity = 0.2;
-        setTimeout(() => {
-          preview.src = btn.dataset.image;
-          preview.style.opacity = 1;
-        }, 120);
-      }
-
-      if (meta) {
-        meta.innerHTML = `<h3>${btn.dataset.title}</h3><p>${btn.dataset.location}</p><p>${btn.dataset.type}</p>`;
-      }
-    });
+  buttons.forEach((button) => {
+    button.addEventListener('mouseenter', () => activate(button));
+    button.addEventListener('focus', () => activate(button));
   });
+
+  function activate(button) {
+    buttons.forEach((b) => b.classList.remove('is-active'));
+    button.classList.add('is-active');
+    preview.style.opacity = '0.18';
+    setTimeout(() => {
+      preview.src = button.dataset.image;
+      preview.alt = button.dataset.title;
+      preview.style.opacity = '1';
+    }, 110);
+    meta.innerHTML = `<h3>${button.dataset.title}</h3><p>${button.dataset.location}</p><p>${button.dataset.type}</p>`;
+  }
 };

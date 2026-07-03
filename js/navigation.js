@@ -1,12 +1,44 @@
 window.DS = window.DS || {};
-window.DS.initNavigation = function(){
-  const header=document.querySelector('[data-header]');
-  const toggle=document.querySelector('[data-menu-toggle]');
-  const nav=document.querySelector('[data-nav]');
-  if(toggle && nav){ toggle.addEventListener('click',()=>nav.classList.toggle('is-open')); nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('is-open'))); }
-  const update=()=>{ if(!header) return; header.classList.toggle('is-scrolled', window.scrollY>70); };
-  window.addEventListener('scroll',update,{passive:true}); update();
-  document.querySelectorAll('a[href^="#"]').forEach(a=>{
-    a.addEventListener('click',e=>{ const id=a.getAttribute('href'); if(id.length<2) return; const el=document.querySelector(id); if(!el) return; e.preventDefault(); if(window.DS.lenis){ window.DS.lenis.scrollTo(el,{offset:0}); } else { el.scrollIntoView({behavior:'smooth'}); } });
+
+DS.initNavigation = function () {
+  const header = document.querySelector('[data-header]');
+  const toggle = document.querySelector('[data-menu-toggle]');
+  const nav = document.querySelector('[data-nav]');
+
+  function updateHeader() {
+    if (!header) return;
+    const scrolled = window.scrollY > 70;
+    header.classList.toggle('is-scrolled', scrolled);
+  }
+
+  window.addEventListener('scroll', updateHeader, { passive: true });
+  updateHeader();
+
+  if (toggle && nav) {
+    toggle.addEventListener('click', () => {
+      const open = nav.classList.toggle('is-open');
+      toggle.classList.toggle('is-open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+      document.body.classList.toggle('menu-open', open);
+    });
+
+    nav.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('is-open');
+        toggle.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('menu-open');
+      });
+    });
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener('click', (event) => {
+      const target = document.querySelector(link.getAttribute('href'));
+      if (!target) return;
+      event.preventDefault();
+      if (window.DS.lenis) DS.lenis.scrollTo(target, { offset: 0 });
+      else target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
   });
 };

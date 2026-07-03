@@ -1,13 +1,46 @@
 window.DS = window.DS || {};
-window.DS.initManifesto = function(){
-  if(!window.gsap || !window.ScrollTrigger) return;
-  const section=document.querySelector('.manifesto-section'); if(!section) return;
-  const isMobile = window.matchMedia('(max-width: 760px)').matches;
-  gsap.timeline({scrollTrigger:{trigger:section,start:'top top',end:'+=220%',scrub:true,pin:true,invalidateOnRefresh:true}})
-    .from('.manifesto-line',{y:isMobile ? 44 : 80,opacity:0,stagger:.08,duration:.18})
-    .to('.line-design',{y:()=>isMobile ? '-24vh' : '-34vh',duration:.55},.28)
-    .to('.line-build',{scale:isMobile ? .86 : .78,opacity:.72,duration:.55},.28)
-    .to('.line-give',{y:()=>isMobile ? '24vh' : '34vh',duration:.55},.28)
-    .to('.manifesto-nav',{opacity:1,y:0,duration:.38},.52)
-    .to('.manifesto-nav',{y:()=>isMobile ? '-28vh' : '-40vh',scale:isMobile ? .92 : .82,duration:.44},.78);
+
+DS.initManifesto = function () {
+  if (!window.gsap || !window.ScrollTrigger) return;
+  const isMobile = window.matchMedia('(max-width: 860px)').matches;
+  const section = document.querySelector('.manifesto-section');
+  if (!section || isMobile) {
+    gsap.set('.manifesto-line', { opacity: 1, y: 0 });
+    gsap.set('.manifesto-menu', { opacity: 1, y: 0 });
+    return;
+  }
+
+  gsap.timeline({
+    scrollTrigger: {
+      trigger: section,
+      start: 'top top',
+      end: '+=220%',
+      scrub: true,
+      pin: true
+    }
+  })
+    .from('.manifesto-line', { opacity: 0, y: 80, stagger: 0.08, duration: 0.2 })
+    .to('.manifesto-design', { y: '-34vh', duration: 0.55 }, 0.32)
+    .to('.manifesto-build', { opacity: 0.68, scale: 0.78, duration: 0.55 }, 0.32)
+    .to('.manifesto-give', { y: '34vh', duration: 0.55 }, 0.32)
+    .to('.manifesto-menu', { opacity: 1, y: 0, duration: 0.32 }, 0.58)
+    .to('.manifesto-menu', { y: '-38vh', scale: 0.84, duration: 0.38 }, 0.82);
+};
+
+DS.initShapeTitle = function () {
+  if (!window.gsap || !window.ScrollTrigger) return;
+  const isMobile = window.matchMedia('(max-width: 860px)').matches;
+  const section = document.querySelector('.disciplines-section');
+  if (!section || isMobile) return;
+
+  gsap.timeline({
+    scrollTrigger: {
+      trigger: section,
+      start: 'top 45%',
+      end: 'top top',
+      scrub: true
+    }
+  })
+    .fromTo('.shape-word-we', { x: 0 }, { x: '-18vw', ease: 'none' }, 0)
+    .fromTo('.shape-word-shape', { x: 0 }, { x: '18vw', ease: 'none' }, 0);
 };
