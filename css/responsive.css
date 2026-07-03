@@ -1,4 +1,21 @@
 @media (max-width:1100px){
+  html,
+  body{
+    width:100%;
+    max-width:100%;
+    overflow-x:hidden;
+  }
+
+  *,
+  *::before,
+  *::after{
+    box-sizing:border-box;
+  }
+
+  :root{
+    --pad:clamp(22px,4vw,46px);
+  }
+
   .studio-layout,
   .mena-layout,
   .offices-layout{
@@ -12,7 +29,132 @@
   .office-visual{
     height:44vh;
   }
+
+  section,
+  .content-section,
+  .studio-section,
+  .works-section,
+  .offices-section,
+  .contact-section{
+    width:100%;
+    max-width:100vw;
+    overflow:hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  p,
+  a,
+  button{
+    max-width:100%;
+  }
+
+  .hero-content h1,
+  .studio-text h2,
+  .studio-copy h2,
+  .mena-text h2,
+  .works-section h2,
+  .offices-section h2,
+  .contact-section h2,
+  .featured-content h2{
+    max-width:calc(100vw - var(--pad) * 2);
+    white-space:normal;
+    overflow-wrap:normal;
+    word-break:normal;
+  }
+
+  /* Tablet disciplines animation stage */
+  .disciplines-section{
+    position:relative;
+    height:100svh;
+    min-height:100svh;
+    padding:0;
+    overflow:hidden;
+  }
+
+  .disciplines-section .section-label{
+    position:absolute;
+    top:clamp(92px,11vh,120px);
+    left:var(--pad);
+    z-index:8;
+    margin:0;
+  }
+
+  .shape-title{
+    display:flex !important;
+    position:absolute;
+    left:var(--pad);
+    right:var(--pad);
+    top:50%;
+    z-index:7;
+    justify-content:center;
+    align-items:center;
+    gap:.24em;
+    margin:0;
+    transform:translateY(-50%);
+    font-size:clamp(76px,15vw,172px);
+    line-height:.82;
+    letter-spacing:-.085em;
+    text-transform:uppercase;
+    white-space:nowrap;
+    pointer-events:none;
+    max-width:calc(100vw - var(--pad) * 2);
+  }
+
+  .disciplines-layout{
+    position:absolute;
+    left:var(--pad);
+    right:var(--pad);
+    top:50%;
+    z-index:6;
+    display:grid;
+    grid-template-columns:minmax(260px,42vw) 1fr;
+    align-items:center;
+    gap:clamp(28px,5vw,64px);
+    min-height:0;
+    padding:0;
+    opacity:0;
+    transform:translateY(38vh);
+    will-change:transform,opacity;
+  }
+
+  .discipline-preview{
+    width:100%;
+    height:auto;
+    min-height:0;
+    aspect-ratio:1.12/1;
+    will-change:transform,opacity;
+  }
+
+  .discipline-list{
+    width:100%;
+    display:grid;
+    gap:8px;
+  }
+
+  .discipline-list button{
+    opacity:0;
+    transform:translateY(60px);
+    will-change:transform,opacity;
+    font-size:clamp(44px,8.4vw,92px);
+    line-height:.92;
+    padding:5px 0 5px 34px;
+    text-align:left;
+    white-space:normal;
+    overflow-wrap:normal;
+    word-break:normal;
+    max-width:100%;
+  }
+
+  .discipline-list button:before{
+    left:0;
+    top:.42em;
+    width:9px;
+    height:9px;
+  }
 }
+
 
 /* =========================
    MOBILE / TABLET
@@ -173,10 +315,10 @@
   .content-section h2,
   .mena-text h2,
   .contact-section h2{
-    font-size:clamp(48px,15vw,76px);
+    font-size:clamp(46px,14.2vw,74px);
     line-height:.92;
-    letter-spacing:-.075em;
-    max-width:100%;
+    letter-spacing:-.065em;
+    max-width:calc(100vw - 44px);
     overflow-wrap:normal;
     word-break:normal;
   }
@@ -234,10 +376,10 @@
   }
 
   .featured-content h2{
-    font-size:clamp(70px,23vw,112px);
+    font-size:clamp(64px,21vw,104px);
     line-height:.86;
-    letter-spacing:-.08em;
-    max-width:92vw;
+    letter-spacing:-.07em;
+    max-width:calc(100vw - 44px);
     word-break:normal;
   }
 
@@ -251,49 +393,86 @@
     display:none !important;
   }
 
-  /* Disciplines */
+  /* Disciplines, mobile animated stage */
   .disciplines-section{
-    min-height:auto;
+    position:relative;
+    height:100svh;
+    min-height:100svh;
+    padding:0;
     overflow:hidden;
-    padding-top:105px;
-    padding-bottom:80px;
+  }
+
+  .disciplines-section .section-label{
+    position:absolute;
+    top:102px;
+    left:var(--pad);
+    z-index:8;
+    margin:0;
   }
 
   .shape-title{
-    display:none !important;
+    display:flex !important;
+    position:absolute;
+    left:var(--pad);
+    right:var(--pad);
+    top:48%;
+    z-index:7;
+    justify-content:center;
+    align-items:center;
+    gap:.22em;
+    margin:0;
+    transform:translateY(-50%);
+    font-size:clamp(54px,15vw,92px);
+    line-height:.82;
+    letter-spacing:-.075em;
+    text-transform:uppercase;
+    white-space:nowrap;
+    pointer-events:none;
+    max-width:calc(100vw - 44px);
   }
 
   .disciplines-layout{
+    position:absolute;
+    left:var(--pad);
+    right:var(--pad);
+    top:50%;
+    z-index:6;
     display:flex;
-    flex-direction:column-reverse;
-    gap:42px;
-    min-height:auto;
-    padding-top:0;
-    opacity:1 !important;
-    transform:none !important;
+    flex-direction:column;
+    gap:34px;
+    min-height:0;
+    padding:0;
+    opacity:0;
+    transform:translateY(42vh);
+    will-change:transform,opacity;
   }
 
   .discipline-list{
     width:100%;
     display:grid;
-    gap:6px;
+    gap:8px;
   }
 
   .discipline-list button{
-    opacity:1 !important;
-    transform:none !important;
-    font-size:clamp(42px,13vw,68px);
-    line-height:.95;
-    padding:6px 0 6px 34px;
+    opacity:0;
+    transform:translateY(60px);
+    will-change:transform,opacity;
+    font-size:clamp(40px,12vw,66px);
+    line-height:.94;
+    letter-spacing:-.055em;
+    padding:4px 0 4px 30px;
     white-space:normal;
     text-align:left;
+    overflow-wrap:normal;
+    word-break:normal;
+    max-width:100%;
   }
 
   .discipline-list button:before{
     left:0;
-    top:.45em;
-    width:9px;
-    height:9px;
+    top:.42em;
+    width:8px;
+    height:8px;
   }
 
   .discipline-preview{
@@ -301,7 +480,8 @@
     height:auto;
     min-height:0;
     aspect-ratio:1.15/1;
-    order:initial;
+    opacity:0;
+    will-change:transform,opacity;
   }
 
   /* Selected Works */
@@ -311,10 +491,11 @@
   }
 
   .works-section h2{
-    font-size:clamp(64px,19vw,96px);
+    font-size:clamp(58px,17vw,88px);
     line-height:.9;
-    letter-spacing:-.075em;
+    letter-spacing:-.065em;
     margin-bottom:44px;
+    max-width:calc(100vw - 44px);
   }
 
   .works-layout{
@@ -329,9 +510,13 @@
   }
 
   .works-list button{
-    font-size:clamp(54px,16vw,82px);
+    font-size:clamp(48px,14.5vw,76px);
     line-height:.92;
+    letter-spacing:-.055em;
     white-space:normal;
+    overflow-wrap:normal;
+    word-break:normal;
+    max-width:100%;
   }
 
   .works-list button.is-active{
@@ -369,9 +554,10 @@
   }
 
   .offices-section h2{
-    font-size:clamp(58px,18vw,88px);
+    font-size:clamp(54px,16vw,80px);
     line-height:.9;
-    letter-spacing:-.075em;
+    letter-spacing:-.065em;
+    max-width:calc(100vw - 44px);
   }
 
   .offices-layout{
@@ -401,9 +587,9 @@
   }
 
   .office-card h3{
-    font-size:clamp(48px,15vw,72px);
+    font-size:clamp(46px,14vw,68px);
     line-height:.9;
-    letter-spacing:-.06em;
+    letter-spacing:-.055em;
   }
 
   .office-time{
@@ -420,8 +606,9 @@
   }
 
   .contact-section h2{
-    font-size:clamp(58px,17vw,88px);
+    font-size:clamp(54px,15.5vw,80px);
     line-height:.9;
+    letter-spacing:-.06em;
   }
 
   .contact-block a,
@@ -454,6 +641,7 @@
     gap:16px;
   }
 }
+
 
 /* =========================
    SMALL PHONES
@@ -494,38 +682,65 @@
   }
 
   .hero-content h1{
-    font-size:clamp(42px,14vw,70px);
+    font-size:clamp(42px,13.5vw,68px);
   }
 
   .manifesto-copy{
-    font-size:clamp(38px,13vw,66px);
+    font-size:clamp(38px,12.6vw,64px);
   }
 
   .studio-text h2,
   .studio-copy h2,
   .content-section h2,
   .mena-text h2{
-    font-size:clamp(44px,14vw,68px);
+    font-size:clamp(42px,13vw,64px);
+    letter-spacing:-.055em;
   }
 
   .featured-content h2{
-    font-size:clamp(66px,22vw,104px);
+    font-size:clamp(58px,19vw,90px);
+    letter-spacing:-.06em;
+  }
+
+  .shape-title{
+    top:47%;
+    font-size:clamp(44px,14vw,68px);
+    letter-spacing:-.06em;
+    max-width:calc(100vw - 40px);
+  }
+
+  .disciplines-section .section-label{
+    top:96px;
+  }
+
+  .disciplines-layout{
+    gap:28px;
   }
 
   .discipline-list button{
-    font-size:clamp(40px,13vw,64px);
+    font-size:clamp(36px,11.5vw,56px);
+    line-height:.95;
+    letter-spacing:-.05em;
+    padding-left:26px;
+  }
+
+  .discipline-preview{
+    aspect-ratio:1.05/1;
   }
 
   .works-section h2{
-    font-size:clamp(58px,18vw,86px);
+    font-size:clamp(50px,16vw,78px);
+    letter-spacing:-.06em;
   }
 
   .works-list button{
-    font-size:clamp(46px,15vw,72px);
+    font-size:clamp(42px,13.5vw,66px);
+    letter-spacing:-.05em;
   }
 
   .offices-section h2{
-    font-size:clamp(54px,17vw,80px);
+    font-size:clamp(48px,15vw,72px);
+    letter-spacing:-.055em;
   }
 
   .office-card{
@@ -533,10 +748,14 @@
   }
 
   .office-card h3{
-    font-size:clamp(46px,15vw,68px);
+    font-size:clamp(42px,13vw,62px);
   }
 
   .office-time{
     font-size:34px;
+  }
+
+  .contact-section h2{
+    font-size:clamp(46px,14vw,70px);
   }
 }
