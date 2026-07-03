@@ -78,4 +78,4 @@ DS.initShapeTitle = function () {
       { opacity: 1, y: 0, stagger: 0.04, ease: 'none' },
       0.32
     );
-};
+}; 
