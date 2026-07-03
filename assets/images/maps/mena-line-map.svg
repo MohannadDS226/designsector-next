@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" fill="none">
+<rect width="1200" height="720" fill="#f3f0f1"/>
+<path d="M252 335 C 360 276, 446 280, 540 324 C 640 371, 736 355, 880 300" stroke="#050505" stroke-width="1.2" stroke-linecap="round" opacity="0.72"/>
+<path d="M300 388 C 420 430, 550 410, 706 456 C 780 478, 850 480, 940 452" stroke="#777" stroke-width="0.8" opacity="0.5"/>
+<circle cx="392" cy="350" r="8" fill="#f5ea64"/><circle cx="785" cy="338" r="8" fill="#f5ea64"/>
+<path d="M392 350 C 500 275, 640 282, 785 338" stroke="#f5ea64" stroke-width="2" stroke-dasharray="6 10"/>
+<text x="350" y="330" font-family="Montserrat,Arial" font-size="22" fill="#050505">EGYPT</text>
+<text x="805" y="326" font-family="Montserrat,Arial" font-size="22" fill="#050505">SAUDI ARABIA</text>
+<path d="M70 100 H 1130 M70 620 H1130 M100 70 V650 M1100 70 V650" stroke="#c8c4c2" stroke-width="1" opacity="0.45"/>
+</svg>
