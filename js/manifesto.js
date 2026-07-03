@@ -39,10 +39,13 @@ DS.initShapeTitle = function () {
   if (!section || !layout || !buttons.length) return;
 
   if (isMobile) {
-    gsap.set(layout, { opacity: 1, y: 0 });
-    gsap.set(buttons, { opacity: 1, y: 0 });
-    return;
-  }
+  gsap.set('.shape-title', { display: 'none' });
+  gsap.set('.shape-word-we', { clearProps: 'all' });
+  gsap.set('.shape-word-shape', { clearProps: 'all' });
+  gsap.set(layout, { opacity: 1, y: 0, clearProps: 'transform' });
+  gsap.set(buttons, { opacity: 1, y: 0, clearProps: 'transform' });
+  return;
+}
 
   gsap.set(layout, { opacity: 0, y: 140 });
   gsap.set(buttons, { opacity: 0, y: 60 });
