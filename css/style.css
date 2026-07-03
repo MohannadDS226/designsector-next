@@ -108,6 +108,18 @@ p{line-height:1.65}
 .discipline-list button{text-align:left;text-transform:uppercase;font-size:clamp(28px,4.2vw,68px);font-weight:800;line-height:1.02;letter-spacing:-.06em;color:#aaa;padding:9px 0 9px 34px;position:relative;transition:color .3s var(--ease),transform .3s var(--ease)}
 .discipline-list button:before{content:"";position:absolute;left:0;top:50%;width:9px;height:9px;background:var(--yellow);transform:translateY(-50%) scale(0);transition:transform .28s var(--ease)}
 .discipline-list button.is-active{color:var(--black);transform:translateX(6px)}.discipline-list button.is-active:before{transform:translateY(-50%) scale(1)}
+.disciplines-section{
+  min-height:100vh;
+  overflow:hidden;
+}
+
+.disciplines-layout{
+  will-change:transform,opacity;
+}
+
+.discipline-list button{
+  will-change:transform,opacity;
+}
 
 /* Works */
 .works-section h2{margin-bottom:7vh}
