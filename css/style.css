@@ -100,15 +100,16 @@ p{line-height:1.65}
 .featured-end-card .line-link{margin-top:24px;text-transform:uppercase;font-size:12px;letter-spacing:.16em;font-weight:700}
 
 /* Disciplines */
-.shape-title{display:flex;justify-content:center;gap:.28em;align-items:center;margin:8vh 0 10vh;font-size:clamp(64px,15vw,220px);line-height:.82;font-weight:800;letter-spacing:-.085em;text-transform:uppercase;white-space:nowrap}
+.shape-title{display:flex;justify-content:center;gap:.28em;align-items:center;margin:0;position:absolute;left:var(--pad);right:var(--pad);top:28vh;z-index:3;font-size:clamp(64px,15vw,220px);line-height:.82;font-weight:800;letter-spacing:-.085em;text-transform:uppercase;white-space:nowrap;pointer-events:none}
 .shape-word{display:inline-block;will-change:transform}
-.disciplines-layout{display:grid;grid-template-columns:minmax(280px,40vw) 1fr;gap:clamp(30px,5vw,80px);align-items:end}
+.disciplines-layout{display:grid;grid-template-columns:minmax(280px,40vw) 1fr;gap:clamp(30px,5vw,80px);align-items:center;min-height:70vh;padding-top:6vh}
 .discipline-preview{height:min(60vh,650px);background-size:cover;background-position:center;filter:grayscale(.06);transition:background-image .22s ease,transform .7s var(--ease);border:1px solid rgba(5,5,5,.08)}
 .discipline-list{display:grid}
 .discipline-list button{text-align:left;text-transform:uppercase;font-size:clamp(28px,4.2vw,68px);font-weight:800;line-height:1.02;letter-spacing:-.06em;color:#aaa;padding:9px 0 9px 34px;position:relative;transition:color .3s var(--ease),transform .3s var(--ease)}
 .discipline-list button:before{content:"";position:absolute;left:0;top:50%;width:9px;height:9px;background:var(--yellow);transform:translateY(-50%) scale(0);transition:transform .28s var(--ease)}
 .discipline-list button.is-active{color:var(--black);transform:translateX(6px)}.discipline-list button.is-active:before{transform:translateY(-50%) scale(1)}
 .disciplines-section{
+  position:relative;
   min-height:100vh;
   overflow:hidden;
 }
