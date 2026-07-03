@@ -21,11 +21,12 @@
   .manifesto-menu{display:none}
   .studio-image,.works-preview,.office-visual{height:48vh;min-height:310px}.studio-text h2,.mena-text h2,.contact-section h2{font-size:clamp(40px,12.5vw,78px);line-height:.92}
   .studio-text p,.mena-text p{font-size:15px}.studio-pillars{font-size:11px;letter-spacing:.12em}
-  .featured-project-section{height:auto;min-height:100svh;padding:0;display:flex;flex-direction:column;justify-content:flex-end}
-  .featured-poster,.featured-clips,.featured-shade{position:absolute;inset:0;height:100%;width:100%}
-  .featured-content{position:relative;height:auto;min-height:100svh;padding:96px 22px 46px;justify-content:flex-end}
+  .featured-project-section{height:auto;min-height:100svh;padding:0;display:block}
+  .featured-stage{position:relative;top:auto;height:100svh;min-height:620px}
+  .featured-poster,.featured-clips,.featured-shade,.featured-content{position:absolute;inset:0;height:100%;width:100%}
+  .featured-content{padding:96px 22px 46px;justify-content:flex-end}
   .featured-content h2{font-size:clamp(52px,15vw,90px);line-height:.88;max-width:100%;word-break:normal}
-  .featured-end-card{position:relative;width:calc(100% - 44px);margin:0 22px 28px;padding:22px;transform:none}.featured-end-card h3{font-size:24px}
+  .featured-end-card{position:relative;width:calc(100% - 44px);margin:-28px 22px 72px;padding:22px;transform:none}.featured-end-card h3{font-size:24px}
   .shape-title{justify-content:flex-start;white-space:normal;gap:.2em;font-size:clamp(58px,17vw,94px);line-height:.85;margin:38px 0 48px;flex-wrap:wrap}
   .disciplines-layout{grid-template-columns:1fr}.discipline-preview{height:42vh;min-height:280px;order:2}.discipline-list button{font-size:clamp(31px,10vw,58px);padding-left:26px;line-height:1.04}.discipline-list button:before{width:8px;height:8px}
   .works-section h2{font-size:clamp(46px,14vw,82px);margin-bottom:34px}.works-layout{grid-template-columns:1fr}.works-list button{font-size:clamp(43px,13vw,82px);line-height:.94}.works-list button.is-active{transform:translateX(8px)}.works-meta{position:static;width:100%;margin-top:0}
@@ -41,6 +42,7 @@
   .section-label{font-size:11px;margin-bottom:22px}
   .hero-content h1{font-size:clamp(42px,14vw,70px)}
   .manifesto-copy{font-size:clamp(38px,13vw,66px)}
+  .featured-stage{min-height:560px}
   .studio-image,.discipline-preview,.works-preview,.office-visual{height:38vh;min-height:250px}
   .works-list button{font-size:clamp(38px,13vw,68px)}
   .footer-nav{grid-template-columns:1fr}
