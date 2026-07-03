@@ -36,10 +36,16 @@ DS.initShapeTitle = function () {
   const layout = document.querySelector('.disciplines-layout');
   const buttons = document.querySelectorAll('.discipline-list button');
 
-  if (!section || isMobile) return;
+  if (!section || !layout || !buttons.length) return;
 
-  gsap.set(layout, { opacity: 0, y: 120 });
-  gsap.set(buttons, { opacity: 0, y: 50 });
+  if (isMobile) {
+    gsap.set(layout, { opacity: 1, y: 0 });
+    gsap.set(buttons, { opacity: 1, y: 0 });
+    return;
+  }
+
+  gsap.set(layout, { opacity: 0, y: 140 });
+  gsap.set(buttons, { opacity: 0, y: 60 });
 
   gsap.timeline({
     scrollTrigger: {
@@ -50,22 +56,26 @@ DS.initShapeTitle = function () {
       pin: true
     }
   })
-    .fromTo('.shape-word-we', 
-      { x: 0, opacity: 1 }, 
-      { x: '-22vw', opacity: 0, ease: 'none' }, 
+    .fromTo(
+      '.shape-word-we',
+      { x: 0, opacity: 1 },
+      { x: '-24vw', opacity: 0, ease: 'none' },
       0.05
     )
-    .fromTo('.shape-word-shape', 
-      { x: 0, opacity: 1 }, 
-      { x: '22vw', opacity: 0, ease: 'none' }, 
+    .fromTo(
+      '.shape-word-shape',
+      { x: 0, opacity: 1 },
+      { x: '24vw', opacity: 0, ease: 'none' },
       0.05
     )
-    .to(layout, 
-      { opacity: 1, y: 0, ease: 'none' }, 
-      0.22
+    .to(
+      layout,
+      { opacity: 1, y: 0, ease: 'none' },
+      0.25
     )
-    .to(buttons, 
-      { opacity: 1, y: 0, stagger: 0.04, ease: 'none' }, 
-      0.28
+    .to(
+      buttons,
+      { opacity: 1, y: 0, stagger: 0.04, ease: 'none' },
+      0.32
     );
 };
