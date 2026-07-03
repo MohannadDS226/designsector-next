@@ -5,42 +5,45 @@ DS.initClipScrub = function () {
   if (!container) return;
 
   const videos = Array.from(container.querySelectorAll('video'));
+  if (!videos.length) return;
+
   const isMobile = window.matchMedia('(max-width: 860px)').matches;
-  let usableVideos = [];
+  let loadedCount = 0;
+  let activeIndex = 0;
 
   videos.forEach((video, index) => {
     const src = isMobile ? video.dataset.mobileSrc : video.dataset.desktopSrc;
     if (!src) return;
+
     video.src = src;
     video.muted = true;
     video.playsInline = true;
-    video.preload = 'metadata';
-    video.dataset.ready = 'false';
+    video.preload = index === 0 ? 'auto' : 'metadata';
+    video.setAttribute('muted', '');
+    video.setAttribute('playsinline', '');
 
     video.addEventListener('loadedmetadata', () => {
-      video.dataset.ready = 'true';
-      usableVideos = videos.filter((v) => v.dataset.ready === 'true' && Number.isFinite(v.duration) && v.duration > 0);
-      if (usableVideos.length && !container.classList.contains('is-ready')) {
-        container.classList.add('is-ready');
-        videos[0].classList.add('is-active');
-      }
+      video.classList.add('has-loaded');
+      loadedCount += 1;
+      container.classList.remove('no-video');
+      container.classList.add('is-ready');
+      if (index === 0) setActiveVideo(0);
       if (window.ScrollTrigger) ScrollTrigger.refresh();
     });
 
     video.addEventListener('error', () => {
-      video.dataset.ready = 'error';
-      usableVideos = videos.filter((v) => v.dataset.ready === 'true' && Number.isFinite(v.duration) && v.duration > 0);
-      if (!usableVideos.length) container.classList.add('no-video');
+      video.classList.add('has-error');
+      const anyLoaded = videos.some((v) => v.classList.contains('has-loaded'));
+      if (!anyLoaded && loadedCount === 0) container.classList.add('no-video');
     });
+
+    try { video.load(); } catch (error) {}
   });
 
+  setActiveVideo(0);
+
   if (isMobile) {
-    const first = videos[0];
-    if (first) {
-      first.classList.add('is-active');
-      first.addEventListener('loadedmetadata', () => first.play().catch(() => {}), { once: true });
-      first.loop = true;
-    }
+    startMobileSequence();
     return;
   }
 
@@ -55,21 +58,56 @@ DS.initClipScrub = function () {
   });
 
   function scrubTo(progress) {
-    const ready = videos.filter((v) => v.dataset.ready === 'true' && Number.isFinite(v.duration) && v.duration > 0);
-    if (!ready.length) return;
-
-    const count = ready.length;
+    const count = videos.length;
     const raw = Math.min(progress * count, count - 0.0001);
-    const index = Math.floor(raw);
+    const index = Math.max(0, Math.floor(raw));
     const segmentProgress = raw - index;
-    const active = ready[index];
+    const active = videos[index];
 
-    ready.forEach((video, i) => video.classList.toggle('is-active', i === index));
+    setActiveVideo(index);
 
-    const targetTime = Math.max(0, Math.min(active.duration - 0.04, segmentProgress * active.duration));
+    if (!active || !active.classList.contains('has-loaded') || !Number.isFinite(active.duration) || active.duration <= 0) return;
+
+    const safeEnd = Math.max(0, active.duration - 0.05);
+    const targetTime = Math.max(0, Math.min(safeEnd, segmentProgress * active.duration));
+
     try {
-      if (Math.abs(active.currentTime - targetTime) > 0.08) active.currentTime = targetTime;
+      if (Math.abs(active.currentTime - targetTime) > 0.07) active.currentTime = targetTime;
     } catch (error) {}
+  }
+
+  function startMobileSequence() {
+    videos.forEach((video, index) => {
+      video.addEventListener('ended', () => playMobile(index + 1));
+    });
+
+    const first = videos[0];
+    if (!first) return;
+
+    const playFirst = () => playMobile(0);
+    if (first.classList.contains('has-loaded')) playFirst();
+    else first.addEventListener('loadedmetadata', playFirst, { once: true });
+  }
+
+  function playMobile(index) {
+    const nextIndex = index % videos.length;
+    const video = videos[nextIndex];
+    if (!video || !video.classList.contains('has-loaded')) return;
+
+    setActiveVideo(nextIndex);
+    video.currentTime = 0;
+    video.play().catch(() => {});
+  }
+
+  function setActiveVideo(index) {
+    activeIndex = index;
+    videos.forEach((video, i) => {
+      const active = i === activeIndex;
+      video.classList.toggle('is-active', active);
+      if (!active) {
+        try { video.pause(); } catch (error) {}
+      }
+    });
   }
 };
 
@@ -81,6 +119,7 @@ DS.initDisciplinePreviews = function () {
   buttons.forEach((button) => {
     button.addEventListener('mouseenter', () => activate(button));
     button.addEventListener('focus', () => activate(button));
+    button.addEventListener('click', () => activate(button));
   });
 
   function activate(button) {
@@ -99,6 +138,7 @@ DS.initWorks = function () {
   buttons.forEach((button) => {
     button.addEventListener('mouseenter', () => activate(button));
     button.addEventListener('focus', () => activate(button));
+    button.addEventListener('click', () => activate(button));
   });
 
   function activate(button) {
