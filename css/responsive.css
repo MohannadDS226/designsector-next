@@ -851,26 +851,22 @@
   }
 }
 
-/* Manifesto image, mobile no-crop */
+/* Manifesto background, mobile no-crop */
 @media (max-width:860px){
 
   .manifesto-section{
     background:#050505 !important;
-    position:relative !important;
-    overflow:hidden !important;
   }
 
-  .manifesto-section img{
+  .manifesto-bg{
     position:absolute !important;
-    left:50% !important;
-    top:50% !important;
-    width:100vw !important;
-    height:auto !important;
-    max-width:none !important;
-    max-height:none !important;
-    object-fit:contain !important;
-    object-position:center center !important;
-    transform:translate(-50%,-50%) !important;
+    inset:0 !important;
+    width:100% !important;
+    height:100% !important;
+    background-size:contain !important;
+    background-position:center center !important;
+    background-repeat:no-repeat !important;
+    background-color:#050505 !important;
   }
 
 }
