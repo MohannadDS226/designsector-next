@@ -66,6 +66,16 @@ p{line-height:1.65}
 .kicker{font-size:12px;letter-spacing:.19em;text-transform:uppercase;color:rgba(255,255,255,.68);font-weight:600;margin-bottom:18px}
 .hero-note{margin-top:24px;color:rgba(255,255,255,.72);font-size:14px;letter-spacing:.12em;text-transform:uppercase}
 .scroll-cue{position:absolute;right:var(--pad);bottom:34px;z-index:2;text-transform:uppercase;letter-spacing:.18em;font-size:11px;writing-mode:vertical-rl;color:rgba(255,255,255,.6)}
+.hero-content-logo{
+  max-width:620px;
+}
+
+.hero-main-logo{
+  display:block;
+  width:min(520px,42vw);
+  height:auto;
+  margin:26px 0 28px;
+}
 
 /* Manifesto */
 .manifesto-section{height:100vh;display:grid;place-items:center;overflow:hidden;padding:0 var(--pad)}
