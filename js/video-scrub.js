@@ -58,14 +58,16 @@ DS.initClipScrub = function () {
 
   if (!window.gsap || !window.ScrollTrigger) return;
 
-  ScrollTrigger.create({
+ const shouldPinFeatured = window.matchMedia('(max-width: 860px)').matches;
+
+ScrollTrigger.create({
   trigger: '.featured-project-section',
   start: 'top top',
-  end: '+=220%',
+  end: shouldPinFeatured ? '+=220%' : 'bottom bottom',
   scrub: true,
-  pin: '.featured-stage',
-  pinSpacing: true,
-  anticipatePin: 1,
+  pin: shouldPinFeatured ? '.featured-stage' : false,
+  pinSpacing: shouldPinFeatured,
+  anticipatePin: shouldPinFeatured ? 1 : 0,
   invalidateOnRefresh: true,
   onUpdate: (self) => scrubTo(self.progress)
 });
