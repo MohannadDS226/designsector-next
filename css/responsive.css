@@ -971,3 +971,55 @@
     font-size:clamp(38px,11.5vw,58px) !important;
   }
 }
+
+/* FINAL PHONE DISCIPLINES FIX */
+@media (max-width:520px){
+
+  .disciplines-section{
+    height:100svh;
+    min-height:100svh;
+    padding:0;
+    overflow:hidden;
+  }
+
+  .disciplines-section .section-label{
+    top:96px;
+  }
+
+  .shape-title{
+    top:50%;
+    font-size:clamp(40px,13vw,64px) !important;
+  }
+
+  .disciplines-layout{
+    top:52%;
+    left:var(--pad);
+    right:var(--pad);
+    display:block;
+    opacity:0;
+    transform:translateY(20vh);
+  }
+
+  .discipline-preview{
+    display:none !important;
+  }
+
+  .discipline-list{
+    display:grid;
+    gap:4px;
+    width:100%;
+  }
+
+  .discipline-list button{
+    font-size:clamp(31px,9.7vw,48px) !important;
+    line-height:.92 !important;
+    letter-spacing:-.045em !important;
+    padding:3px 0 3px 24px !important;
+  }
+
+  .discipline-list button:before{
+    width:7px;
+    height:7px;
+    top:.42em;
+  }
+}
