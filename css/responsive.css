@@ -880,13 +880,17 @@
     width:auto !important;
     max-width:none !important;
     min-width:0 !important;
+    box-sizing:border-box !important;
+    overflow:visible !important;
   }
 
   .discipline-list{
+    display:grid !important;
     width:100% !important;
     max-width:100% !important;
     min-width:0 !important;
-    overflow:hidden !important;
+    gap:5px !important;
+    overflow:visible !important;
   }
 
   .discipline-list button{
@@ -896,12 +900,13 @@
     min-width:0 !important;
     box-sizing:border-box !important;
 
-    font-size:clamp(27px,8.5vw,40px) !important;
-    line-height:.94 !important;
-    letter-spacing:-.03em !important;
-    padding:3px 0 3px 22px !important;
+    font-size:clamp(26px,7.8vw,34px) !important;
+    line-height:.96 !important;
+    letter-spacing:-.025em !important;
+    padding:3px 0 3px 20px !important;
 
     white-space:normal !important;
+    overflow:visible !important;
     overflow-wrap:normal !important;
     word-break:normal !important;
     text-align:left !important;
