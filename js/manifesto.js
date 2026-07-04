@@ -44,19 +44,30 @@ DS.initShapeTitle = function () {
   const isTablet = window.matchMedia('(max-width:1100px)').matches;
   const isPhone = window.matchMedia('(max-width:520px)').matches;
 
+  const moveAmount = isPhone ? '42vw' : isTablet ? '34vw' : '24vw';
+  const startY = isTablet ? '26vh' : 140;
+  const endDistance = isTablet ? '+=190%' : '+=160%';
+
   gsap.set(title, { opacity: 1 });
   gsap.set(wordWe, { x: 0, opacity: 1 });
   gsap.set(wordShape, { x: 0, opacity: 1 });
-  gsap.set(layout, { opacity: 0, y: isTablet ? '42vh' : 140 });
-  gsap.set(buttons, { opacity: 0, y: isTablet ? 70 : 60 });
+
+  gsap.set(layout, {
+    opacity: 0,
+    y: startY
+  });
+
+  gsap.set(buttons, {
+    opacity: 0,
+    y: isTablet ? 44 : 60
+  });
 
   if (preview) {
-    gsap.set(preview, { opacity: isTablet ? 0 : 1, y: isTablet ? 55 : 0 });
+    gsap.set(preview, {
+      opacity: isTablet ? 0 : 1,
+      y: isTablet ? 36 : 0
+    });
   }
-
-  const moveAmount = isPhone ? '44vw' : isTablet ? '36vw' : '24vw';
-  const endDistance = isTablet ? '+=190%' : '+=160%';
-  const listStart = isTablet ? 0.24 : 0.25;
 
   const tl = gsap.timeline({
     scrollTrigger: {
@@ -74,30 +85,30 @@ DS.initShapeTitle = function () {
     wordWe,
     { x: 0, opacity: 1 },
     { x: `-${moveAmount}`, opacity: 0, ease: 'none' },
-    0.05
+    0.04
   )
   .fromTo(
     wordShape,
     { x: 0, opacity: 1 },
     { x: moveAmount, opacity: 0, ease: 'none' },
-    0.05
+    0.04
   )
   .to(
     layout,
-    { opacity: 1, y: 0, ease: 'none' },
-    listStart
+    { opacity: 1, y: '-28vh', ease: 'none' },
+    0.18
   )
   .to(
     buttons,
-    { opacity: 1, y: 0, stagger: 0.045, ease: 'none' },
-    listStart + 0.06
+    { opacity: 1, y: 0, stagger: 0.035, ease: 'none' },
+    0.22
   );
 
   if (preview) {
     tl.to(
       preview,
       { opacity: 1, y: 0, ease: 'none' },
-      0.48
+      0.58
     );
   }
 };
