@@ -59,13 +59,16 @@ DS.initClipScrub = function () {
   if (!window.gsap || !window.ScrollTrigger) return;
 
   ScrollTrigger.create({
-    trigger: '.featured-project-section',
-    start: 'top top',
-    end: 'bottom bottom',
-    scrub: true,
-    invalidateOnRefresh: true,
-    onUpdate: (self) => scrubTo(self.progress)
-  });
+  trigger: '.featured-project-section',
+  start: 'top top',
+  end: '+=220%',
+  scrub: true,
+  pin: '.featured-stage',
+  pinSpacing: true,
+  anticipatePin: 1,
+  invalidateOnRefresh: true,
+  onUpdate: (self) => scrubTo(self.progress)
+});
 
   function scrubTo(progress) {
     const count = videos.length;
