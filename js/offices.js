@@ -39,3 +39,39 @@ DS.initOffices = function () {
     }, 110);
   }
 };
+
+DS.initSectionTabs = function () {
+  const groups = document.querySelectorAll('[data-section-tabs]');
+  if (!groups.length) return;
+
+  groups.forEach((group) => {
+    const buttons = Array.from(group.querySelectorAll('[data-tab-target]'));
+    const section = group.closest('section');
+    if (!section || !buttons.length) return;
+
+    const panels = Array.from(section.querySelectorAll('[data-tab-panel]'));
+    const heading = section.querySelector('[data-tab-heading]');
+
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const targetId = button.dataset.tabTarget;
+        const targetPanel = section.querySelector(`#${targetId}`);
+
+        buttons.forEach((btn) => btn.classList.remove('is-active'));
+        panels.forEach((panel) => panel.classList.remove('is-active'));
+
+        button.classList.add('is-active');
+        if (targetPanel) targetPanel.classList.add('is-active');
+        if (heading && button.dataset.tabTitle) heading.textContent = button.dataset.tabTitle;
+
+        if (window.ScrollTrigger) ScrollTrigger.refresh();
+      });
+    });
+  });
+};
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', DS.initSectionTabs);
+} else {
+  DS.initSectionTabs();
+}
