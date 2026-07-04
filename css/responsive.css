@@ -337,19 +337,17 @@
 
   /* Featured Project */
   .featured-project-section{
-    height:auto;
-    min-height:150vh;
-    padding:0;
-    display:block;
-  }
+  height:auto;
+  min-height:100vh;
+  padding:0;
+  display:block;
+}
 
-  .featured-stage{
-    position:sticky;
-    top:0;
-    height:100vh;
-    min-height:100svh;
-  }
-
+.featured-stage{
+  position:relative;
+  height:100vh;
+  min-height:100svh;
+}
   .featured-poster,
   .featured-clips,
   .featured-shade,
