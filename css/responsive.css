@@ -947,3 +947,39 @@
   }
 
 }
+
+@media (max-width:860px){
+
+  .section-tabs{
+    gap:8px;
+    margin-bottom:26px;
+  }
+
+  .section-tab{
+    padding:11px 16px;
+    font-size:10px;
+  }
+
+  .careers-layout{
+    display:flex;
+    flex-direction:column;
+    gap:24px;
+  }
+
+  .careers-copy,
+  .careers-card{
+    padding:28px;
+  }
+
+  .careers-copy h3{
+    font-size:clamp(36px,11vw,58px);
+  }
+
+  .careers-copy p{
+    font-size:17px;
+  }
+
+  .careers-card{
+    min-height:260px;
+  }
+}
