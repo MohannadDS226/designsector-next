@@ -3,29 +3,58 @@ window.DS = window.DS || {};
 DS.initManifesto = function () {
   if (!window.gsap || !window.ScrollTrigger) return;
 
-  const isMobile = window.matchMedia('(max-width: 860px)').matches;
   const section = document.querySelector('.manifesto-section');
+  const copy = document.querySelector('.manifesto-copy');
 
-  gsap.set('.manifesto-line', { opacity: 1 });
+  if (!section || !copy) return;
 
-  if (!section || isMobile) {
-    gsap.set('.manifesto-line', { y: 0, scale: 1 });
-    return;
-  }
+  const lines = Array.from(copy.querySelectorAll('span'));
+  if (lines.length < 3) return;
+
+  const isTablet = window.matchMedia('(max-width:1100px)').matches;
+  const isPhone = window.matchMedia('(max-width:520px)').matches;
+
+  const moveTop = isPhone ? '-18vh' : isTablet ? '-16vh' : '-20vh';
+  const moveBottom = isPhone ? '18vh' : isTablet ? '16vh' : '20vh';
+  const endDistance = isTablet ? '+=150%' : '+=140%';
+
+  gsap.set(lines, {
+    opacity: 1,
+    y: 0
+  });
 
   gsap.timeline({
     scrollTrigger: {
       trigger: section,
       start: 'top top',
-      end: '+=170%',
+      end: endDistance,
       scrub: true,
-      pin: true
+      pin: true,
+      anticipatePin: 1,
+      invalidateOnRefresh: true
     }
   })
-    .from('.manifesto-line', { opacity: 0, y: 64, stagger: 0.08, duration: 0.24 })
-    .to('.manifesto-design', { y: '-22vh', duration: 0.58 }, 0.34)
-    .to('.manifesto-build', { scale: 0.82, opacity: 0.72, duration: 0.58 }, 0.34)
-    .to('.manifesto-give', { y: '22vh', duration: 0.58 }, 0.34);
+  .fromTo(
+    lines,
+    { opacity: 0, y: 55 },
+    { opacity: 1, y: 0, stagger: 0.08, ease: 'none' },
+    0
+  )
+  .to(
+    lines[0],
+    { y: moveTop, opacity: 0.45, ease: 'none' },
+    0.42
+  )
+  .to(
+    lines[1],
+    { y: 0, opacity: 1, scale: 1.02, ease: 'none' },
+    0.42
+  )
+  .to(
+    lines[2],
+    { y: moveBottom, opacity: 0.45, ease: 'none' },
+    0.42
+  );
 };
 
 DS.initShapeTitle = function () {
