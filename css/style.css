@@ -149,6 +149,98 @@ p{line-height:1.65}
 .office-card{background:var(--off);padding:clamp(22px,3vw,42px);min-height:270px;transition:background .3s var(--ease),transform .3s var(--ease)}.office-card.is-active,.office-card:hover{background:#fff;transform:translateY(-8px)}
 .office-card h3{text-transform:uppercase;font-size:clamp(32px,4vw,68px);line-height:.92;letter-spacing:-.065em}.office-card p{margin-top:10px;text-transform:uppercase;letter-spacing:.13em;color:#555;font-size:12px;font-weight:600}.office-time{display:block;margin-top:12px;font-size:clamp(24px,3vw,40px);font-weight:700}.office-card .line-link{margin-top:24px;text-transform:uppercase;font-size:12px;letter-spacing:.16em;font-weight:700;color:#333}
 .office-visual{margin:0;height:min(58vh,650px);overflow:hidden;background:#ddd}.office-visual img{width:100%;height:100%;object-fit:cover;transition:opacity .22s ease,transform .7s var(--ease)}
+.section-tabs{
+  display:flex;
+  gap:10px;
+  margin-bottom:28px;
+}
+
+.section-tab{
+  border:1px solid rgba(5,5,5,.28);
+  background:transparent;
+  color:var(--black);
+  padding:12px 22px;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  cursor:pointer;
+  transition:background .25s var(--ease),color .25s var(--ease),border-color .25s var(--ease);
+}
+
+.section-tab.is-active{
+  background:var(--black);
+  color:var(--white);
+  border-color:var(--black);
+}
+
+.section-tab-panel{
+  display:none;
+}
+
+.section-tab-panel.is-active{
+  display:block;
+}
+
+.careers-layout{
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:clamp(34px,6vw,90px);
+  align-items:stretch;
+}
+
+.careers-copy{
+  border:1px solid rgba(5,5,5,.18);
+  padding:clamp(32px,5vw,70px);
+  background:rgba(255,255,255,.45);
+}
+
+.careers-copy h3{
+  font-size:clamp(42px,5.5vw,92px);
+  line-height:.9;
+  letter-spacing:-.06em;
+  text-transform:uppercase;
+  margin-bottom:28px;
+}
+
+.careers-copy p{
+  max-width:680px;
+  font-size:19px;
+  line-height:1.55;
+  color:rgba(5,5,5,.68);
+  margin-bottom:34px;
+}
+
+.careers-card{
+  border:1px solid rgba(5,5,5,.18);
+  padding:clamp(30px,4vw,54px);
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  min-height:360px;
+}
+
+.careers-label{
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  font-weight:800;
+  color:rgba(5,5,5,.45);
+  margin-bottom:20px;
+}
+
+.careers-card h4{
+  font-size:clamp(30px,3.6vw,56px);
+  line-height:.95;
+  letter-spacing:-.045em;
+  text-transform:uppercase;
+  margin-bottom:18px;
+}
+
+.careers-card p{
+  color:rgba(5,5,5,.62);
+  line-height:1.5;
+}
 
 /* Contact */
 .contact-section{display:flex;flex-direction:column;justify-content:center}.contact-section h2{font-size:clamp(54px,10vw,160px)}.contact-block{margin-top:42px}.contact-block p{color:rgba(255,255,255,.68)}.contact-block a{display:inline-block;margin-top:10px;font-size:clamp(22px,3vw,42px);letter-spacing:-.04em}.contact-cta{margin-top:46px;width:min(420px,100%);border-top:1px solid rgba(255,255,255,.25);border-bottom:1px solid rgba(255,255,255,.25);padding:20px 0;text-transform:uppercase;letter-spacing:.16em;font-size:12px;font-weight:700;position:relative}.contact-cta:before{content:"";position:absolute;left:0;top:50%;width:9px;height:9px;background:var(--yellow);transform:translateY(-50%);transition:left .36s var(--ease)}.contact-cta:hover:before{left:calc(100% - 9px)}
