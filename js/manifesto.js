@@ -94,10 +94,10 @@ DS.initShapeTitle = function () {
     0.04
   )
   .to(
-    layout,
-    { opacity: 1, y: '-28vh', ease: 'none' },
-    0.18
-  )
+  layout,
+  { opacity: 1, y: isPhone ? '-12vh' : '-28vh', ease: 'none' },
+  0.18
+)
   .to(
     buttons,
     { opacity: 1, y: 0, stagger: 0.035, ease: 'none' },
