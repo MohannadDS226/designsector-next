@@ -850,3 +850,15 @@
     margin:22px 0 24px;
   }
 }
+
+/* Manifesto background image, mobile no-crop */
+@media (max-width:860px){
+
+  .manifesto-section{
+    background-size:contain !important;
+    background-position:center center !important;
+    background-repeat:no-repeat !important;
+    background-color:#050505 !important;
+  }
+
+}
