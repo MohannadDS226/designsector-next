@@ -789,3 +789,398 @@ p{line-height:1.65}
 .project-card.is-hidden{
   display:none;
 }
+
+/* =========================
+   PROJECT DETAIL PAGE
+========================= */
+
+.project-detail-page{
+  background:var(--black);
+  color:var(--white);
+}
+
+.project-detail-page figure{
+  margin:0;
+}
+
+.project-detail-page img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+
+/* Project Hero */
+
+.project-hero{
+  position:relative;
+  min-height:100vh;
+  padding:0;
+  overflow:hidden;
+  display:flex;
+  align-items:flex-end;
+}
+
+.project-hero-media{
+  position:absolute;
+  inset:0;
+  z-index:1;
+}
+
+.project-hero-media img{
+  transform:scale(1.03);
+}
+
+.project-hero-shade{
+  position:absolute;
+  inset:0;
+  z-index:2;
+  background:
+    linear-gradient(to top, rgba(5,5,5,.78), rgba(5,5,5,.18) 48%, rgba(5,5,5,.35)),
+    linear-gradient(to right, rgba(5,5,5,.45), rgba(5,5,5,0) 62%);
+}
+
+.project-hero-content{
+  position:relative;
+  z-index:3;
+  width:100%;
+  padding:0 var(--pad) clamp(52px,8vw,110px);
+}
+
+.project-kicker{
+  font-size:12px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  font-weight:700;
+  margin-bottom:22px;
+  color:rgba(255,255,255,.76);
+}
+
+.project-hero h1{
+  font-size:clamp(82px,16vw,260px);
+  line-height:.78;
+  letter-spacing:-.09em;
+  text-transform:uppercase;
+  max-width:1100px;
+}
+
+.project-hero-note{
+  margin-top:26px;
+  font-family:var(--serif);
+  font-size:clamp(28px,4vw,64px);
+  line-height:1;
+  color:rgba(255,255,255,.82);
+}
+
+
+/* Overview */
+
+.project-overview{
+  padding:clamp(110px,12vw,190px) var(--pad);
+}
+
+.project-overview-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:clamp(40px,8vw,140px);
+  align-items:start;
+}
+
+.project-overview-copy h2,
+.project-section-heading h2,
+.masterplan-copy h2,
+.chapter-intro h2,
+.lifestyle-copy h2{
+  font-size:clamp(46px,7.5vw,124px);
+  line-height:.88;
+  letter-spacing:-.07em;
+  text-transform:uppercase;
+}
+
+.project-overview-text{
+  max-width:720px;
+  padding-top:42px;
+}
+
+.project-overview-text p{
+  font-size:clamp(18px,1.45vw,24px);
+  line-height:1.55;
+  color:rgba(5,5,5,.66);
+  margin-bottom:24px;
+}
+
+.project-meta-grid{
+  margin-top:clamp(70px,9vw,130px);
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  border-top:1px solid rgba(5,5,5,.16);
+  border-left:1px solid rgba(5,5,5,.16);
+}
+
+.project-meta-grid div{
+  padding:28px;
+  border-right:1px solid rgba(5,5,5,.16);
+  border-bottom:1px solid rgba(5,5,5,.16);
+}
+
+.project-meta-grid span{
+  display:block;
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:rgba(5,5,5,.42);
+  margin-bottom:16px;
+  font-weight:800;
+}
+
+.project-meta-grid strong{
+  display:block;
+  font-size:18px;
+  font-weight:600;
+}
+
+
+/* Masterplan */
+
+.project-masterplan{
+  padding:clamp(110px,12vw,180px) var(--pad);
+  background:var(--black);
+  color:var(--white);
+}
+
+.masterplan-copy{
+  max-width:960px;
+  margin-bottom:clamp(50px,7vw,95px);
+}
+
+.masterplan-copy p:last-child{
+  max-width:700px;
+  margin-top:24px;
+  font-size:19px;
+  line-height:1.55;
+  color:rgba(255,255,255,.62);
+}
+
+.masterplan-frame{
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.12);
+  background:#111;
+  aspect-ratio:16/8.2;
+}
+
+.masterplan-frame img{
+  object-fit:cover;
+}
+
+.masterplan-labels{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:22px;
+}
+
+.masterplan-labels span{
+  border:1px solid rgba(255,255,255,.22);
+  padding:12px 18px;
+  border-radius:999px;
+  font-size:11px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.72);
+}
+
+
+/* Aerial Story */
+
+.project-aerial-story{
+  padding:clamp(110px,12vw,180px) var(--pad);
+}
+
+.project-section-heading{
+  margin-bottom:clamp(50px,7vw,90px);
+}
+
+.aerial-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+
+.aerial-card{
+  position:relative;
+  min-height:420px;
+  overflow:hidden;
+  background:#ddd;
+}
+
+.aerial-card-large{
+  grid-column:span 2;
+  grid-row:span 2;
+  min-height:860px;
+}
+
+.aerial-card figcaption,
+.chapter-image figcaption{
+  position:absolute;
+  left:18px;
+  bottom:18px;
+  z-index:2;
+  padding:10px 13px;
+  background:rgba(5,5,5,.72);
+  backdrop-filter:blur(12px);
+  color:var(--white);
+  font-size:10px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  font-weight:800;
+}
+
+.aerial-card:after,
+.chapter-image:after{
+  content:"";
+  position:absolute;
+  inset:auto 0 0 0;
+  height:38%;
+  background:linear-gradient(to top, rgba(5,5,5,.46), transparent);
+  pointer-events:none;
+}
+
+
+/* Chapters */
+
+.project-chapter{
+  padding:clamp(110px,12vw,180px) var(--pad);
+}
+
+.chapter-intro{
+  display:grid;
+  grid-template-columns:120px 1fr;
+  gap:clamp(32px,6vw,90px);
+  align-items:start;
+  margin-bottom:clamp(55px,8vw,110px);
+}
+
+.chapter-intro span{
+  font-size:clamp(64px,9vw,150px);
+  line-height:.8;
+  font-weight:800;
+  letter-spacing:-.08em;
+  color:var(--yellow);
+}
+
+.chapter-intro .section-label{
+  margin-bottom:24px;
+}
+
+.chapter-intro h2{
+  max-width:980px;
+}
+
+.chapter-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:18px;
+}
+
+.chapter-image{
+  position:relative;
+  overflow:hidden;
+  background:#151515;
+  min-height:620px;
+}
+
+.light-section .chapter-image{
+  background:#ddd;
+}
+
+.chapter-image-wide{
+  grid-column:span 2;
+  min-height:760px;
+}
+
+
+/* Lifestyle */
+
+.project-lifestyle{
+  position:relative;
+  min-height:100vh;
+  padding:0;
+  overflow:hidden;
+  display:flex;
+  align-items:flex-end;
+}
+
+.lifestyle-frame{
+  position:absolute;
+  inset:0;
+  z-index:1;
+}
+
+.lifestyle-frame:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(to top, rgba(5,5,5,.82), rgba(5,5,5,.12) 55%, rgba(5,5,5,.22)),
+    linear-gradient(to right, rgba(5,5,5,.48), rgba(5,5,5,0) 65%);
+}
+
+.lifestyle-copy{
+  position:relative;
+  z-index:2;
+  padding:0 var(--pad) clamp(60px,9vw,130px);
+  max-width:980px;
+}
+
+.lifestyle-copy p:last-child{
+  margin-top:24px;
+  font-size:clamp(20px,2vw,34px);
+  letter-spacing:.24em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.72);
+}
+
+
+/* Next Project */
+
+.project-next{
+  padding:clamp(90px,10vw,150px) var(--pad);
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:40px;
+}
+
+.project-next-inner a{
+  display:block;
+  color:var(--black);
+}
+
+.project-next-inner a span{
+  display:block;
+  font-size:clamp(50px,7vw,118px);
+  line-height:.9;
+  letter-spacing:-.07em;
+  text-transform:uppercase;
+  font-weight:800;
+}
+
+.project-next-inner a strong{
+  display:block;
+  margin-top:20px;
+  font-size:13px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+}
+
+.back-to-projects{
+  font-size:12px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  font-weight:800;
+  border:1px solid rgba(5,5,5,.22);
+  padding:16px 22px;
+  border-radius:999px;
+}
