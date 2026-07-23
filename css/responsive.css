@@ -1124,3 +1124,254 @@
     margin-bottom:34px;
   }
 }
+
+/* =========================
+   PROJECT DETAIL RESPONSIVE
+========================= */
+
+@media (max-width:860px){
+
+  .project-hero{
+    min-height:100svh;
+  }
+
+  .project-hero-content{
+    padding:0 22px 54px;
+  }
+
+  .project-hero h1{
+    font-size:clamp(68px,22vw,118px);
+    line-height:.82;
+    letter-spacing:-.075em;
+    max-width:100%;
+  }
+
+  .project-hero-note{
+    font-size:clamp(28px,9vw,46px);
+    margin-top:18px;
+  }
+
+  .project-kicker{
+    font-size:10px;
+    letter-spacing:.18em;
+    margin-bottom:18px;
+  }
+
+
+  /* Overview */
+
+  .project-overview{
+    padding:96px 22px 82px;
+  }
+
+  .project-overview-grid{
+    display:flex;
+    flex-direction:column;
+    gap:26px;
+  }
+
+  .project-overview-copy h2,
+  .project-section-heading h2,
+  .masterplan-copy h2,
+  .chapter-intro h2,
+  .lifestyle-copy h2{
+    font-size:clamp(42px,13vw,76px);
+    line-height:.9;
+    letter-spacing:-.055em;
+    max-width:100%;
+  }
+
+  .project-overview-text{
+    padding-top:0;
+  }
+
+  .project-overview-text p{
+    font-size:17px;
+    line-height:1.55;
+  }
+
+  .project-meta-grid{
+    margin-top:48px;
+    grid-template-columns:1fr 1fr;
+  }
+
+  .project-meta-grid div{
+    padding:20px;
+  }
+
+  .project-meta-grid strong{
+    font-size:15px;
+  }
+
+
+  /* Masterplan */
+
+  .project-masterplan{
+    padding:96px 22px 82px;
+  }
+
+  .masterplan-copy{
+    margin-bottom:38px;
+  }
+
+  .masterplan-copy p:last-child{
+    font-size:17px;
+  }
+
+  .masterplan-frame{
+    aspect-ratio:1/1.08;
+  }
+
+  .masterplan-frame img{
+    object-fit:contain;
+    background:#050505;
+  }
+
+  .masterplan-labels{
+    gap:8px;
+    margin-top:16px;
+  }
+
+  .masterplan-labels span{
+    padding:10px 13px;
+    font-size:9px;
+    letter-spacing:.13em;
+  }
+
+
+  /* Aerial Story */
+
+  .project-aerial-story{
+    padding:96px 22px 82px;
+  }
+
+  .project-section-heading{
+    margin-bottom:38px;
+  }
+
+  .aerial-grid{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+
+  .aerial-card,
+  .aerial-card-large{
+    min-height:auto;
+    height:auto;
+    aspect-ratio:4/5;
+  }
+
+  .aerial-card-large{
+    grid-column:auto;
+    grid-row:auto;
+  }
+
+
+  /* Chapters */
+
+  .project-chapter{
+    padding:96px 22px 82px;
+  }
+
+  .chapter-intro{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+    margin-bottom:38px;
+  }
+
+  .chapter-intro span{
+    font-size:72px;
+  }
+
+  .chapter-intro .section-label{
+    margin-bottom:12px;
+  }
+
+  .chapter-grid{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+
+  .chapter-image,
+  .chapter-image-wide{
+    min-height:auto;
+    height:auto;
+    aspect-ratio:4/5;
+    grid-column:auto;
+  }
+
+  .aerial-card figcaption,
+  .chapter-image figcaption{
+    left:12px;
+    bottom:12px;
+    font-size:9px;
+    padding:9px 11px;
+  }
+
+
+  /* Lifestyle */
+
+  .project-lifestyle{
+    min-height:100svh;
+  }
+
+  .lifestyle-copy{
+    padding:0 22px 58px;
+  }
+
+  .lifestyle-copy p:last-child{
+    font-size:14px;
+    line-height:1.7;
+    letter-spacing:.18em;
+    max-width:310px;
+  }
+
+
+  /* Next Project */
+
+  .project-next{
+    padding:82px 22px;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:34px;
+  }
+
+  .project-next-inner a span{
+    font-size:clamp(42px,13vw,72px);
+  }
+
+  .back-to-projects{
+    font-size:10px;
+    padding:14px 18px;
+  }
+
+}
+
+
+@media (max-width:520px){
+
+  .project-meta-grid{
+    grid-template-columns:1fr;
+  }
+
+  .masterplan-frame{
+    aspect-ratio:1/1.18;
+  }
+
+  .aerial-card,
+  .aerial-card-large,
+  .chapter-image,
+  .chapter-image-wide{
+    aspect-ratio:3/4;
+  }
+
+  .project-hero-media img,
+  .lifestyle-frame img{
+    object-position:center center;
+  }
+
+}
