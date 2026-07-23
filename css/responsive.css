@@ -1375,3 +1375,22 @@
   }
 
 }
+
+/* Porto Golf page only - header logo crop fix */
+.porto-golf-page .site-header,
+.porto-golf-page .header-inner,
+.porto-golf-page .brand{
+  overflow:visible !important;
+}
+
+.porto-golf-page .brand{
+  height:58px !important;
+  display:flex !important;
+  align-items:center !important;
+}
+
+.porto-golf-page .brand-logo{
+  max-height:46px !important;
+  width:auto !important;
+  object-fit:contain !important;
+}
