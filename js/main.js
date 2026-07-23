@@ -89,8 +89,14 @@ DS.initMasterplanJourney = function () {
     if (count) count.textContent = step.count;
 
     zoneLabels.forEach((label) => {
-      label.classList.toggle('is-active', label.dataset.zoneLabel === step.zone);
-    });
+  label.classList.toggle('is-active', label.dataset.zoneLabel === step.zone);
+});
+
+const previews = section.querySelectorAll('[data-zone-preview]');
+
+previews.forEach((preview) => {
+  preview.classList.toggle('is-active', preview.dataset.zonePreview === step.zone);
+});
   }
 
   setStep(0);
