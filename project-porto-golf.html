@@ -189,30 +189,46 @@
       </div>
     </section>
 
-    <section class="project-masterplan dark-section" data-theme="dark">
-      <div class="masterplan-copy reveal-up">
-        <p class="section-label">Masterplan Journey</p>
-        <h2>The landscape as a connected resort spine.</h2>
-        <p>
-          A pinned masterplan moment can guide the visitor through the project, revealing the plazas, pool courts, and social islands as one continuous experience.
-        </p>
-      </div>
+    <section class="project-masterplan masterplan-journey dark-section" data-theme="dark" data-masterplan-journey>
 
-      <figure class="masterplan-frame reveal-up">
-        <img
-          src="assets/images/renders/porto-golf/masterplan.webp"
-          alt="Top-down masterplan of Porto Golf landscape design"
-          loading="lazy"
-        >
-      </figure>
+  <div class="masterplan-sticky" data-masterplan-sticky>
 
-      <div class="masterplan-labels" aria-label="Masterplan zones">
-        <span>Plaza 201</span>
-        <span>Plaza 133</span>
-        <span>Plaza 203</span>
-        <span>Central Spine</span>
+    <figure class="masterplan-frame masterplan-journey-frame">
+      <img
+        src="assets/images/renders/porto-golf/masterplan.webp"
+        alt="Top-down masterplan of Porto Golf landscape design"
+        data-masterplan-image
+      >
+    </figure>
+
+    <div class="masterplan-journey-shade"></div>
+
+    <div class="masterplan-journey-copy">
+      <p class="section-label">Masterplan Journey</p>
+      <h2 data-masterplan-title>The landscape as a connected resort spine.</h2>
+      <p data-masterplan-text>
+        Scroll through the plan to move from the full resort layout into the main plazas, pool courts, and central spine.
+      </p>
+    </div>
+
+    <div class="masterplan-zone-labels" aria-label="Masterplan zones">
+      <span data-zone-label="plaza-201" style="left:52%; top:70%;">Plaza 201</span>
+      <span data-zone-label="plaza-133" style="left:16%; top:55%;">Plaza 133</span>
+      <span data-zone-label="plaza-203" style="left:77%; top:22%;">Plaza 203</span>
+      <span data-zone-label="spine" style="left:58%; top:46%;">Central Spine</span>
+    </div>
+
+    <div class="masterplan-progress">
+      <span data-masterplan-count>01</span>
+      <div>
+        <i data-masterplan-progress-bar></i>
       </div>
-    </section>
+      <span>05</span>
+    </div>
+
+  </div>
+
+</section>
 
     <section class="project-aerial-story light-section" data-theme="light">
       <div class="project-section-heading reveal-up">
