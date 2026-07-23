@@ -1041,3 +1041,86 @@
     min-height:260px;
   }
 }
+
+/* =========================
+   Projects Page Responsive
+========================= */
+
+@media (max-width:860px){
+
+  .projects-hero{
+    min-height:72vh;
+    padding:132px var(--pad) 64px;
+  }
+
+  .projects-hero-grid{
+    display:flex;
+    flex-direction:column;
+    gap:28px;
+    align-items:flex-start;
+  }
+
+  .projects-hero h1{
+    font-size:clamp(58px,17vw,98px);
+    line-height:.86;
+    letter-spacing:-.065em;
+  }
+
+  .projects-intro{
+    font-size:18px;
+    max-width:100%;
+  }
+
+  .projects-index{
+    padding:32px var(--pad) 90px;
+  }
+
+  .projects-filter{
+    gap:8px;
+    margin-bottom:28px;
+  }
+
+  .projects-filter button{
+    padding:10px 14px;
+    font-size:10px;
+  }
+
+  .projects-grid{
+    display:flex;
+    flex-direction:column;
+    gap:22px;
+  }
+
+  .project-card figure,
+  .project-card-large figure{
+    aspect-ratio:1 / 1.12;
+  }
+
+  .project-card-info{
+    left:22px;
+    right:22px;
+    bottom:22px;
+  }
+
+  .project-card-info h2,
+  .project-card:not(.project-card-large) .project-card-info h2{
+    font-size:clamp(38px,12vw,62px);
+    line-height:.88;
+  }
+
+  .project-card-info p{
+    font-size:10px;
+    line-height:1.35;
+  }
+
+  .projects-cta{
+    min-height:70vh;
+    padding:90px var(--pad);
+  }
+
+  .projects-cta h2{
+    font-size:clamp(54px,16vw,94px);
+    line-height:.86;
+    margin-bottom:34px;
+  }
+}
