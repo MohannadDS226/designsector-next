@@ -34,24 +34,94 @@
   </div>
 
   <header class="site-header" data-header>
+  <div class="header-inner">
+
+    <nav class="site-nav site-nav-left" data-nav-left aria-label="Primary navigation left">
+      <a href="projects.html" class="nav-link">Projects</a>
+
+      <button class="nav-link nav-dropdown-trigger" type="button" data-mega-trigger="services" aria-expanded="false">
+        Services
+      </button>
+
+      <a href="#contact" class="nav-link">Contact</a>
+    </nav>
+
     <a href="#top" class="brand" aria-label="Design Sector home">
       <img src="assets/logos/ds-logo-black.png" alt="Design Sector" class="brand-logo brand-logo-dark" />
       <img src="assets/logos/ds-logo-white.png" alt="Design Sector" class="brand-logo brand-logo-light" />
       <span class="brand-fallback">DESIGN SECTOR</span>
     </a>
 
-    <button class="menu-toggle" data-menu-toggle aria-label="Open menu" aria-expanded="false">
-      <span></span><span></span>
-    </button>
+    <nav class="site-nav site-nav-right" data-nav-right aria-label="Primary navigation right">
+      <button class="nav-link nav-dropdown-trigger" type="button" data-mega-trigger="about" aria-expanded="false">
+        About
+      </button>
 
-    <nav class="site-nav" data-nav aria-label="Primary navigation">
-      <a href="#studio">Studio</a>
-      <a href="#featured-project">Projects</a>
-      <a href="#disciplines">Disciplines</a>
-      <a href="#offices">Offices</a>
-      <a href="#contact">Contact</a>
+      <a href="careers.html" class="nav-link">Career</a>
+
+      <a href="#contact" class="nav-cta">
+        <span>Let’s Talk</span>
+        <span class="nav-cta-plus">+</span>
+      </a>
     </nav>
-  </header>
+
+    <button class="menu-toggle" data-menu-toggle aria-label="Open menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <div class="mega-menu" data-mega-menu>
+    <div class="mega-panel" data-mega-panel="services">
+      <div class="mega-panel-inner">
+        <a href="#disciplines">Architecture</a>
+        <a href="#disciplines">Interiors</a>
+        <a href="#disciplines">Landscape</a>
+        <a href="#disciplines">Master Planning</a>
+        <a href="#disciplines">Construction</a>
+        <a href="#disciplines">Visualization</a>
+      </div>
+    </div>
+
+    <div class="mega-panel" data-mega-panel="about">
+      <div class="mega-panel-inner">
+        <a href="#studio">Studio</a>
+        <a href="news.html">News</a>
+        <a href="team.html">Team</a>
+        <a href="#mena">MENA Presence</a>
+        <a href="#offices">Offices</a>
+      </div>
+    </div>
+  </div>
+
+  <nav class="mobile-nav" data-nav aria-label="Mobile navigation">
+    <a href="projects.html">Projects</a>
+
+    <div class="mobile-nav-group">
+      <p>Services</p>
+      <a href="#disciplines">Architecture</a>
+      <a href="#disciplines">Interiors</a>
+      <a href="#disciplines">Landscape</a>
+      <a href="#disciplines">Master Planning</a>
+      <a href="#disciplines">Construction</a>
+      <a href="#disciplines">Visualization</a>
+    </div>
+
+    <a href="#contact">Contact</a>
+
+    <div class="mobile-nav-group">
+      <p>About</p>
+      <a href="#studio">Studio</a>
+      <a href="news.html">News</a>
+      <a href="team.html">Team</a>
+      <a href="#mena">MENA Presence</a>
+      <a href="#offices">Offices</a>
+    </div>
+
+    <a href="careers.html">Career</a>
+    <a href="#contact">Let’s Talk +</a>
+  </nav>
+</header>
 
   <main id="top">
     <section class="hero-section dark-section" id="intro" data-theme="dark">
