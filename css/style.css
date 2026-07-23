@@ -785,3 +785,7 @@ p{line-height:1.65}
 .projects-cta .section-label{
   color:rgba(255,255,255,.62);
 }
+
+.project-card.is-hidden{
+  display:none;
+}
