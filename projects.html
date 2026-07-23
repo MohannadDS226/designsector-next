@@ -199,19 +199,43 @@
       </div>
     </section>
 
+  
   </main>
 
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
-  <script src="js/scroll.js" defer></script>
-  <script src="js/loader.js" defer></script>
-  <script src="js/navigation.js" defer></script>
-  <script src="js/manifesto.js" defer></script>
-  <script src="js/video-scrub.js" defer></script>
-  <script src="js/offices.js" defer></script>
-  <script src="js/main.js" defer></script>
-</body>
-</html>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const filters = document.querySelector('[data-project-filters]');
+    const cards = document.querySelectorAll('.project-card[data-category]');
+
+    if (!filters || !cards.length) return;
+
+    filters.querySelectorAll('button').forEach((button) => {
+      button.addEventListener('click', () => {
+        const filter = button.dataset.filter;
+
+        filters.querySelectorAll('button').forEach((btn) => btn.classList.remove('is-active'));
+        button.classList.add('is-active');
+
+        cards.forEach((card) => {
+          const categories = card.dataset.category.split(' ');
+          const visible = filter === 'all' || categories.includes(filter);
+
+          card.classList.toggle('is-hidden', !visible);
+        });
+      });
+    });
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
+<script src="js/scroll.js" defer></script>
+<script src="js/loader.js" defer></script>
+<script src="js/navigation.js" defer></script>
+<script src="js/manifesto.js" defer></script>
+<script src="js/video-scrub.js" defer></script>
+<script src="js/offices.js" defer></script>
+<script src="js/main.js" defer></script>
 </body>
 </html>
