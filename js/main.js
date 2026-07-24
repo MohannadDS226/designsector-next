@@ -29,6 +29,7 @@ DS.initReveals = function () {
 
 DS.initMasterplanJourney = function () {
   const section = document.querySelector('[data-masterplan-journey]');
+
   if (!section || !window.gsap || !window.ScrollTrigger) return;
 
   gsap.registerPlugin(ScrollTrigger);
@@ -89,14 +90,11 @@ DS.initMasterplanJourney = function () {
     if (count) count.textContent = step.count;
 
     zoneLabels.forEach((label) => {
-  label.classList.toggle('is-active', label.dataset.zoneLabel === step.zone);
-});
-
-const previews = section.querySelectorAll('[data-zone-preview]');
-
-previews.forEach((preview) => {
-  preview.classList.toggle('is-active', preview.dataset.zonePreview === step.zone);
-});
+      label.classList.toggle(
+        'is-active',
+        label.dataset.zoneLabel === step.zone
+      );
+    });
   }
 
   setStep(0);
@@ -108,9 +106,14 @@ previews.forEach((preview) => {
       end: 'bottom bottom',
       scrub: true,
       invalidateOnRefresh: true,
+
       onUpdate: (self) => {
         const progress = self.progress;
-        const index = Math.min(steps.length - 1, Math.floor(progress * steps.length));
+
+        const index = Math.min(
+          steps.length - 1,
+          Math.floor(progress * steps.length)
+        );
 
         setStep(index);
 
@@ -121,49 +124,51 @@ previews.forEach((preview) => {
     }
   });
 
- timeline
-  .to(image, {
-    scale: 1.08,
-    xPercent: 0,
-    yPercent: 0,
-    ease: 'none',
-    duration: 1
-  })
-  .to(image, {
-    scale: 1.38,
-    xPercent: -6,
-    yPercent: 14,
-    ease: 'none',
-    duration: 1
-  })
-  .to(image, {
-    scale: 1.42,
-    xPercent: 0,
-    yPercent: -15,
-    ease: 'none',
-    duration: 1
-  })
-  .to(image, {
-    scale: 1.36,
-    xPercent: 20,
-    yPercent: 0,
-    ease: 'none',
-    duration: 1
-  })
-  .to(image, {
-    scale: 1.32,
-    xPercent: -4,
-    yPercent: 0,
-    ease: 'none',
-    duration: 1
-  })
-  .to(image, {
-    scale: 1.05,
-    xPercent: 0,
-    yPercent: 0,
-    ease: 'none',
-    duration: 1
-  });
+  timeline
+    .to(image, {
+      scale: 1.08,
+      xPercent: 0,
+      yPercent: 0,
+      ease: 'none',
+      duration: 1
+    })
+    .to(image, {
+      scale: 1.38,
+      xPercent: -6,
+      yPercent: 14,
+      ease: 'none',
+      duration: 1
+    })
+    .to(image, {
+      scale: 1.42,
+      xPercent: 0,
+      yPercent: -15,
+      ease: 'none',
+      duration: 1
+    })
+    .to(image, {
+      scale: 1.36,
+      xPercent: 20,
+      yPercent: 0,
+      ease: 'none',
+      duration: 1
+    })
+    .to(image, {
+      scale: 1.32,
+      xPercent: -4,
+      yPercent: 0,
+      ease: 'none',
+      duration: 1
+    })
+    .to(image, {
+      scale: 1.05,
+      xPercent: 0,
+      yPercent: 0,
+      ease: 'none',
+      duration: 1
+    });
+};
+
 
 /* =========================
    SITE INIT
@@ -187,6 +192,8 @@ window.addEventListener('DOMContentLoaded', () => {
   DS.initMasterplanJourney?.();
 
   setTimeout(() => {
-    if (window.ScrollTrigger) ScrollTrigger.refresh();
+    if (window.ScrollTrigger) {
+      ScrollTrigger.refresh();
+    }
   }, 800);
 });
