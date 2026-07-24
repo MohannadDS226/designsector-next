@@ -121,51 +121,49 @@ previews.forEach((preview) => {
     }
   });
 
-  timeline
-    .to(image, {
-      scale: 1.28,
-      xPercent: 0,
-      yPercent: 0,
-      ease: 'none',
-      duration: 1
-    })
-    .to(image, {
-      scale: 2.05,
-      xPercent: -5,
-      yPercent: -20,
-      ease: 'none',
-      duration: 1
-    })
-    .to(image, {
-      scale: 2.18,
-      xPercent: 25,
-      yPercent: -3,
-      ease: 'none',
-      duration: 1
-    })
-    .to(image, {
-      scale: 2.22,
-      xPercent: -24,
-      yPercent: 22,
-      ease: 'none',
-      duration: 1
-    })
-    .to(image, {
-      scale: 2.2,
-      xPercent: -10,
-      yPercent: -3,
-      ease: 'none',
-      duration: 1
-    })
-    .to(image, {
-      scale: 1.15,
-      xPercent: 0,
-      yPercent: 0,
-      ease: 'none',
-      duration: 1
-    });
-};
-
+ timeline
+  .to(image, {
+    scale: 1.08,
+    xPercent: 0,
+    yPercent: 0,
+    ease: 'none',
+    duration: 1
+  })
+  .to(image, {
+    scale: 1.38,
+    xPercent: -6,
+    yPercent: 14,
+    ease: 'none',
+    duration: 1
+  })
+  .to(image, {
+    scale: 1.42,
+    xPercent: 0,
+    yPercent: -15,
+    ease: 'none',
+    duration: 1
+  })
+  .to(image, {
+    scale: 1.36,
+    xPercent: 20,
+    yPercent: 0,
+    ease: 'none',
+    duration: 1
+  })
+  .to(image, {
+    scale: 1.32,
+    xPercent: -4,
+    yPercent: 0,
+    ease: 'none',
+    duration: 1
+  })
+  .to(image, {
+    scale: 1.05,
+    xPercent: 0,
+    yPercent: 0,
+    ease: 'none',
+    duration: 1
+  });
 
 /* =========================
    SITE INIT
