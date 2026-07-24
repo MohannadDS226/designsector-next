@@ -120,3 +120,41 @@ body.project-lightbox-open{
   }
 
 }
+
+/* FINAL LIGHTBOX IMAGE NO-CROP FIX */
+
+.project-detail-page .project-lightbox{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  overflow:hidden !important;
+}
+
+.project-detail-page .project-lightbox .project-lightbox-image{
+  display:block !important;
+
+  width:auto !important;
+  height:auto !important;
+
+  max-width:calc(100vw - 80px) !important;
+  max-height:calc(100svh - 80px) !important;
+
+  object-fit:contain !important;
+  object-position:center center !important;
+
+  margin:auto !important;
+  flex:none !important;
+}
+
+@media (max-width:520px){
+
+  .project-detail-page .project-lightbox{
+    padding:14px !important;
+  }
+
+  .project-detail-page .project-lightbox .project-lightbox-image{
+    max-width:calc(100vw - 28px) !important;
+    max-height:calc(100svh - 28px) !important;
+  }
+
+}
