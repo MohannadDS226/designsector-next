@@ -11,12 +11,19 @@ DS.initTeamRoster = function () {
   const track = section.querySelector('[data-partners-track]');
   const progress = section.querySelector('[data-partners-progress]');
   const heading = section.querySelector('h2');
+  const copy = section.querySelector('.partners-success-copy');
   const groups = Array.from(section.querySelectorAll('.partner-group'));
   const cards = Array.from(section.querySelectorAll('.partner-card'));
   const surfaces = Array.from(section.querySelectorAll('.partner-portrait-surface'));
   const gsapRef = window.gsap;
   const triggerRef = window.ScrollTrigger;
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  applyLayoutPolish();
+
+  if (copy) {
+    copy.textContent = 'A growing roster of the people shaping the studio.';
+  }
 
   if (!pin || !viewport || !track) return;
 
@@ -127,6 +134,49 @@ DS.initTeamRoster = function () {
   window.addEventListener('load', refresh, { once: true });
   document.fonts?.ready?.then(refresh);
   window.setTimeout(refresh, 900);
+
+  function applyLayoutPolish() {
+    const styleId = 'partners-success-layout-polish';
+    if (document.getElementById(styleId)) return;
+
+    const style = document.createElement('style');
+    style.id = styleId;
+    style.textContent = `
+      @media (min-width: 861px) {
+        .partners-success-pin {
+          grid-template-columns: minmax(360px, 36vw) minmax(0, 1fr);
+        }
+
+        .partners-success-intro {
+          overflow: hidden;
+          padding-right: clamp(34px, 3vw, 58px);
+        }
+
+        .partners-success-intro h2 {
+          width: 100%;
+          max-width: 100%;
+          font-size: clamp(50px, 4.9vw, 92px);
+          line-height: .86;
+          overflow-wrap: normal;
+          word-break: normal;
+        }
+
+        .partners-viewport {
+          padding-top: clamp(42px, 5.5vh, 62px);
+          padding-bottom: clamp(92px, 12vh, 126px);
+        }
+
+        .partner-group {
+          flex-basis: min(
+            clamp(620px, 54vw, 860px),
+            calc((100svh - 184px) * 1.28)
+          );
+        }
+      }
+    `;
+
+    document.head.appendChild(style);
+  }
 
   function splitHeading(element) {
     if (!element || element.dataset.rosterSplit === 'true') return;
