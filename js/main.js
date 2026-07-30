@@ -45,6 +45,7 @@ DS.initMasterplanJourney = function () {
   const count = section.querySelector('[data-masterplan-count]');
   const progressBar = section.querySelector('[data-masterplan-progress-bar]');
   const zoneLabels = section.querySelectorAll('[data-zone-label]');
+  const isPhone = window.matchMedia('(max-width:520px)').matches;
 
   if (!image) return;
 
@@ -103,6 +104,15 @@ DS.initMasterplanJourney = function () {
   }
 
   setStep(0);
+
+  if (isPhone) {
+    gsap.set(image, {
+      scale: 1,
+      xPercent: 0,
+      yPercent: 0
+    });
+    return;
+  }
 
   const timeline = gsap.timeline({
     scrollTrigger: {

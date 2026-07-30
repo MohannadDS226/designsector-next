@@ -30,7 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     <img
       class="project-lightbox-image"
-      src=""
       alt=""
     >
   `;
@@ -75,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     window.setTimeout(() => {
-      lightboxImage.src = '';
+      lightboxImage.removeAttribute('src');
       lightboxImage.alt = '';
     }, 350);
 

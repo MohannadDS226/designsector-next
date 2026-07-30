@@ -432,7 +432,9 @@ section[data-section-index]::before{
 .featured-end-card{
   width:min(520px,calc(100% - 48px));
   right:var(--ydz-pad);
-  bottom:var(--ydz-pad);
+  top:clamp(86px,12svh,132px);
+  bottom:auto;
+  margin:0;
   padding:30px;
   background:var(--ydz-paper);
   color:var(--ydz-ink);
@@ -1468,6 +1470,150 @@ body.is-entering .experience-transition{
 
   .featured-content h2{
     font-size:clamp(64px,20vw,94px);
+  }
+}
+
+/* Mobile composition refinement */
+
+@media (max-width:520px){
+  .shape-title{
+    left:20px;
+    right:20px;
+    top:47%;
+    width:auto;
+    max-width:none;
+    gap:.14em;
+    justify-content:center;
+    white-space:nowrap;
+  }
+
+  .shape-word{
+    flex:0 0 auto;
+    font-size:clamp(58px,18vw,72px);
+    line-height:.82;
+    letter-spacing:-.065em;
+  }
+
+  .team-intro-grid > *,
+  .project-overview-grid > *,
+  .editorial-section-heading,
+  .role-row{
+    min-width:0;
+  }
+
+  .team-intro-grid > *,
+  .project-overview-grid > *{
+    width:100%;
+    max-width:100%;
+  }
+
+  .project-overview h2,
+  .project-section-heading h2,
+  .chapter-intro h2,
+  .lifestyle-copy h2,
+  .team-intro h2,
+  .careers-statement h2,
+  .editorial-section-heading h2{
+    width:100%;
+    max-width:100%;
+    font-size:clamp(38px,11.5vw,50px);
+    line-height:.92;
+    letter-spacing:-.045em;
+  }
+
+  .team-intro h2{
+    font-size:clamp(34px,9.5vw,42px);
+  }
+
+  .editorial-section-heading h2{
+    font-size:clamp(36px,10vw,44px);
+  }
+
+  .role-row{
+    grid-template-columns:38px minmax(0,1fr);
+    gap:12px;
+    align-items:start;
+    padding:24px 0;
+  }
+
+  .role-row h3{
+    max-width:100%;
+    font-size:clamp(26px,8.2vw,34px);
+    line-height:.94;
+    letter-spacing:-.035em;
+  }
+
+  .role-row p{
+    grid-column:2;
+    margin-top:2px;
+  }
+
+  .masterplan-journey{
+    min-height:0;
+    padding:96px 20px 82px !important;
+  }
+
+  .masterplan-sticky{
+    position:relative;
+    top:auto;
+    height:auto;
+    overflow:visible;
+  }
+
+  .masterplan-journey-frame{
+    position:relative;
+    inset:auto;
+    height:auto;
+    aspect-ratio:1/1 !important;
+  }
+
+  .masterplan-journey-frame img{
+    object-fit:contain;
+    padding:0;
+    transform:none !important;
+  }
+
+  .masterplan-journey-shade{
+    display:none;
+  }
+
+  .masterplan-journey-copy{
+    position:relative;
+    inset:auto;
+    max-width:none;
+    margin-top:30px;
+  }
+
+  .masterplan-journey-copy .section-label{
+    margin-bottom:13px;
+  }
+
+  .masterplan-journey-copy h2{
+    max-width:100%;
+    font-size:clamp(31px,9.2vw,39px);
+    line-height:.94;
+    letter-spacing:-.045em;
+  }
+
+  .masterplan-journey-copy p:last-child{
+    max-width:100%;
+    margin-top:14px;
+    font-size:14px;
+    line-height:1.45;
+  }
+
+  .masterplan-zone-labels{
+    display:none;
+  }
+
+  .masterplan-progress{
+    display:none;
+  }
+
+  .footer-nav a[href^="mailto:"]{
+    font-size:9px;
+    letter-spacing:.06em;
+    overflow-wrap:anywhere;
   }
 }
 
