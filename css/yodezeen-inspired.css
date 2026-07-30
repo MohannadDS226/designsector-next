@@ -993,7 +993,8 @@ body:not(.gsap-ready) .discipline-list button{
 }
 
 .news-intro h1{
-  font-size:clamp(88px,11vw,168px);
+  font-size:clamp(76px,8vw,170px);
+  white-space:nowrap;
 }
 
 .news-card{
@@ -1420,6 +1421,10 @@ body.is-entering .experience-transition{
 
   .news-showcase{
     display:block;
+  }
+
+  .news-intro h1{
+    font-size:clamp(76px,25vw,132px);
   }
 
   .news-feature-column{
