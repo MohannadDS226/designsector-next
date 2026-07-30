@@ -371,6 +371,18 @@
   transform:none;
 }
 
+body.menu-open{
+  overflow:hidden;
+}
+
+body.menu-open .site-header{
+  height:var(--header-h);
+  background:transparent;
+  border-color:transparent;
+  -webkit-backdrop-filter:none;
+  backdrop-filter:none;
+}
+
 .mobile-nav > a{
   font-size:clamp(40px,13vw,66px);
   line-height:.92;
