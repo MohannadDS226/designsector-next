@@ -23,6 +23,8 @@ DS.initNavigation = function () {
     mobileNav.classList.remove('is-open');
     toggle.classList.remove('is-open');
     toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-label', 'Open menu');
+    mobileNav.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('menu-open');
   }
 
@@ -80,6 +82,8 @@ DS.initNavigation = function () {
 
       toggle.classList.toggle('is-open', open);
       toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      mobileNav.setAttribute('aria-hidden', String(!open));
       document.body.classList.toggle('menu-open', open);
 
       closeMegaMenu();
