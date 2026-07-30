@@ -56,7 +56,11 @@ DS.initClipScrub = function () {
 
   setActiveVideo(0);
 
-  if (!window.gsap || !window.ScrollTrigger) return;
+  if (
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
+    !window.gsap ||
+    !window.ScrollTrigger
+  ) return;
 
  const shouldPinFeatured = window.matchMedia('(max-width: 860px)').matches;
 

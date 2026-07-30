@@ -4,7 +4,24 @@ DS.initLoader = function () {
   const loader = document.querySelector('[data-loader]');
   if (!loader) return;
 
-  const hide = () => loader.classList.add('is-hidden');
+  let introSeen = false;
+
+  try {
+    introSeen = window.sessionStorage.getItem('ds-intro-seen') === 'true';
+  } catch (error) {}
+
+  if (introSeen) {
+    loader.classList.add('is-hidden', 'is-bypassed');
+    return;
+  }
+
+  const hide = () => {
+    loader.classList.add('is-hidden');
+
+    try {
+      window.sessionStorage.setItem('ds-intro-seen', 'true');
+    } catch (error) {}
+  };
 
   if (!window.gsap) {
     setTimeout(hide, 900);

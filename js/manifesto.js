@@ -1,6 +1,7 @@
 window.DS = window.DS || {};
 
 DS.initManifesto = function () {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   if (!window.gsap || !window.ScrollTrigger) return;
 
   const section = document.querySelector('.manifesto-section');
@@ -58,6 +59,7 @@ DS.initManifesto = function () {
 };
 
 DS.initShapeTitle = function () {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   if (!window.gsap || !window.ScrollTrigger) return;
 
   const section = document.querySelector('.disciplines-section');

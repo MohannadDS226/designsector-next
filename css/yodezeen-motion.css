@@ -1,0 +1,228 @@
+/*
+  Design Sector motion system
+  Original implementation informed by contemporary editorial architecture sites.
+*/
+
+.motion-word{
+  display:inline-flex;
+  white-space:nowrap;
+  perspective:900px;
+  transform-style:preserve-3d;
+}
+
+.motion-char{
+  display:inline-block;
+  backface-visibility:hidden;
+  will-change:transform,opacity;
+}
+
+.motion-image-ready{
+  overflow:hidden;
+  will-change:clip-path;
+}
+
+.motion-image-ready img{
+  will-change:transform;
+}
+
+.site-header{
+  transition:
+    transform .72s cubic-bezier(.76,0,.24,1),
+    height .4s var(--ease),
+    background .4s ease,
+    color .4s ease;
+}
+
+.site-header.motion-header-hidden{
+  transform:translateY(-110%);
+}
+
+.nav-link{
+  height:18px;
+  overflow:hidden;
+}
+
+.motion-nav-label{
+  display:block;
+  line-height:18px;
+  transition:transform .48s cubic-bezier(.76,0,.24,1);
+}
+
+.motion-nav-label-hover{
+  opacity:.45;
+}
+
+.nav-link:hover .motion-nav-label,
+.nav-link:focus-visible .motion-nav-label{
+  transform:translateY(-18px);
+}
+
+.site-loader{
+  overflow:hidden;
+  clip-path:inset(0 0 0 0);
+  transition:
+    clip-path .5s cubic-bezier(.76,0,.24,1),
+    visibility 0s linear .5s;
+}
+
+.site-loader.is-hidden{
+  opacity:1;
+  visibility:hidden;
+  clip-path:inset(0 0 100% 0);
+  pointer-events:none;
+}
+
+.site-loader.is-bypassed{
+  display:none;
+}
+
+.experience-transition{
+  display:grid;
+  grid-template-columns:repeat(10,minmax(0,1fr));
+  background:transparent;
+  transform:none;
+  visibility:hidden;
+}
+
+.experience-transition__slice{
+  height:100%;
+  background:var(--ydz-ink);
+  transform:translateY(102%);
+  will-change:transform;
+}
+
+body.is-leaving .experience-transition,
+body.is-entering .experience-transition{
+  visibility:visible;
+  animation:none;
+  transform:none;
+}
+
+body.is-leaving .experience-transition__slice{
+  animation:motionSliceIn .62s cubic-bezier(.76,0,.24,1) both;
+  animation-delay:calc(var(--slice) * 28ms);
+}
+
+body.is-entering .experience-transition__slice{
+  animation:motionSliceOut .78s cubic-bezier(.76,0,.24,1) both;
+  animation-delay:calc(var(--slice-reverse) * 24ms);
+}
+
+@keyframes motionSliceIn{
+  from{transform:translateY(102%)}
+  to{transform:translateY(0)}
+}
+
+@keyframes motionSliceOut{
+  from{transform:translateY(0)}
+  to{transform:translateY(-102%)}
+}
+
+.experience-cursor{
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+  color:var(--ydz-ink);
+  font-size:8px;
+  font-weight:700;
+  letter-spacing:.12em;
+}
+
+.experience-cursor::after{
+  content:attr(data-label);
+  opacity:0;
+  transform:scale(.72);
+  transition:opacity .2s ease,transform .28s var(--ease);
+}
+
+.experience-cursor.has-label{
+  width:68px;
+  height:68px;
+  mix-blend-mode:normal;
+}
+
+.experience-cursor.has-label::after{
+  opacity:1;
+  transform:scale(1);
+}
+
+.project-card,
+.discipline-people-card,
+.news-card-image,
+.chapter-image,
+.aerial-card{
+  cursor:none;
+}
+
+.project-card img,
+.discipline-people-card img,
+.news-card-image img,
+.chapter-image img,
+.aerial-card img{
+  transition:filter .7s ease;
+}
+
+.project-card:hover img,
+.discipline-people-card:hover img,
+.news-card-image:hover img,
+.chapter-image:hover img,
+.aerial-card:hover img{
+  filter:saturate(1) contrast(1.025);
+}
+
+.news-feature-column,
+.news-info-column{
+  will-change:clip-path,transform,opacity;
+}
+
+.featured-content h2,
+.featured-project-section video,
+.featured-fallback,
+.studio-image,
+.studio-text{
+  will-change:transform;
+}
+
+@media (max-width:900px){
+  .experience-transition{
+    grid-template-columns:repeat(6,minmax(0,1fr));
+  }
+
+  .experience-transition__slice:nth-child(n+7){
+    display:none;
+  }
+
+  .motion-word{
+    perspective:700px;
+  }
+
+  .site-header.motion-header-hidden{
+    transform:none;
+  }
+
+  .project-card,
+  .discipline-people-card,
+  .news-card-image,
+  .chapter-image,
+  .aerial-card{
+    cursor:auto;
+  }
+}
+
+@media (prefers-reduced-motion:reduce){
+  .motion-char,
+  .motion-image-ready,
+  .motion-image-ready img,
+  .site-header,
+  .motion-nav-label{
+    opacity:1 !important;
+    transform:none !important;
+    clip-path:none !important;
+    transition:none !important;
+    animation:none !important;
+  }
+
+  .experience-transition{
+    display:none;
+  }
+}

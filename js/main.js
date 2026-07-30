@@ -6,9 +6,13 @@ window.DS = window.DS || {};
 ========================= */
 
 DS.initReveals = function () {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   if (!window.gsap || !window.ScrollTrigger) return;
 
-  gsap.utils.toArray('.reveal-up, .reveal-media').forEach((el) => {
+  gsap.utils.toArray(
+    '.reveal-up:not(.motion-split-ready):not(.motion-image-ready), ' +
+    '.reveal-media:not(.motion-split-ready):not(.motion-image-ready)'
+  ).forEach((el) => {
     gsap.to(el, {
       opacity: 1,
       y: 0,
@@ -30,6 +34,7 @@ DS.initReveals = function () {
 DS.initMasterplanJourney = function () {
   const section = document.querySelector('[data-masterplan-journey]');
 
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   if (!section || !window.gsap || !window.ScrollTrigger) return;
 
   gsap.registerPlugin(ScrollTrigger);
