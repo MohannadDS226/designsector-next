@@ -432,7 +432,9 @@ section[data-section-index]::before{
 .featured-end-card{
   width:min(520px,calc(100% - 48px));
   right:var(--ydz-pad);
-  bottom:var(--ydz-pad);
+  top:clamp(86px,12svh,132px);
+  bottom:auto;
+  margin:0;
   padding:30px;
   background:var(--ydz-paper);
   color:var(--ydz-ink);
