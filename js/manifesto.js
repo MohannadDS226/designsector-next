@@ -75,9 +75,9 @@ DS.initShapeTitle = function () {
   const isTablet = window.matchMedia('(max-width:1100px)').matches;
   const isPhone = window.matchMedia('(max-width:520px)').matches;
 
-  const moveAmount = isPhone ? '42vw' : isTablet ? '34vw' : '24vw';
+  const moveAmount = isPhone ? '30vw' : isTablet ? '34vw' : '24vw';
   const startY = isTablet ? '26vh' : 140;
-  const endDistance = isTablet ? '+=190%' : '+=160%';
+  const endDistance = isPhone ? '+=145%' : isTablet ? '+=190%' : '+=160%';
 
   gsap.set(title, { opacity: 1 });
   gsap.set(wordWe, { x: 0, opacity: 1 });
