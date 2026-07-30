@@ -278,15 +278,15 @@ section[data-section-index]::before{
   text-transform:uppercase;
 }
 
-.hero-display span{
+.hero-display > span{
   display:block;
 }
 
-.hero-display span:nth-child(2){
+.hero-display > span:nth-child(2){
   margin-left:clamp(0px,10vw,168px);
 }
 
-.hero-display span:nth-child(3){
+.hero-display > span:nth-child(3){
   color:transparent;
   -webkit-text-stroke:1px rgba(255,255,255,.82);
 }
@@ -379,7 +379,7 @@ section[data-section-index]::before{
 }
 
 .studio-text h2{
-  font-size:clamp(44px,5.4vw,88px);
+  font-size:clamp(42px,4.65vw,78px);
   line-height:.9;
   letter-spacing:-.065em;
   text-transform:uppercase;
@@ -1199,7 +1199,7 @@ body.is-entering .experience-transition{
     line-height:.8;
   }
 
-  .hero-display span:nth-child(2){
+  .hero-display > span:nth-child(2){
     margin-left:0;
   }
 

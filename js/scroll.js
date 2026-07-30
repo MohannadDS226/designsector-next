@@ -2,7 +2,8 @@ window.DS = window.DS || {};
 
 DS.initSmoothScroll = function () {
   const isMobile = window.matchMedia('(max-width: 860px)').matches;
-  if (isMobile || !window.Lenis) return;
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (isMobile || reducedMotion || !window.Lenis) return;
 
   const lenis = new Lenis({
     duration: 1.05,

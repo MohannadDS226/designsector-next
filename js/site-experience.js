@@ -14,11 +14,18 @@ DS.initSiteExperience = function () {
   const transition = document.createElement('div');
   transition.className = 'experience-transition';
   transition.setAttribute('aria-hidden', 'true');
+  transition.innerHTML = Array.from(
+    { length: 10 },
+    (_, index) => (
+      `<span class="experience-transition__slice" ` +
+      `style="--slice:${index};--slice-reverse:${9 - index}"></span>`
+    )
+  ).join('');
   body.appendChild(transition);
 
   if (!reducedMotion) {
     body.classList.add('is-entering');
-    window.setTimeout(() => body.classList.remove('is-entering'), 850);
+    window.setTimeout(() => body.classList.remove('is-entering'), 1150);
   }
 
   const progress = document.createElement('div');
@@ -100,7 +107,7 @@ DS.initSiteExperience = function () {
         body.classList.add('is-leaving');
         window.setTimeout(() => {
           window.location.href = destination.href;
-        }, 480);
+        }, 860);
       });
     });
   }
