@@ -183,6 +183,14 @@ body.is-entering .experience-transition__slice{
   will-change:transform;
 }
 
+/* Keep outlined display typography clean and readable.
+   The original aggressive negative tracking caused adjacent outlines to cross. */
+.hero-display > span:nth-child(3),
+.site-footer::before{
+  letter-spacing:-.02em;
+  font-kerning:normal;
+}
+
 @media (max-width:900px){
   .experience-transition{
     grid-template-columns:repeat(6,minmax(0,1fr));
@@ -206,6 +214,11 @@ body.is-entering .experience-transition__slice{
   .chapter-image,
   .aerial-card{
     cursor:auto;
+  }
+
+  .hero-display > span:nth-child(3),
+  .site-footer::before{
+    letter-spacing:-.01em;
   }
 }
 
