@@ -183,12 +183,14 @@ body.is-entering .experience-transition__slice{
   will-change:transform;
 }
 
-/* Keep outlined display typography clean and readable.
-   The original aggressive negative tracking caused adjacent outlines to cross. */
+/* Use solid white for the two display treatments that previously used
+   text outlines. This removes the internal cross-strokes completely. */
 .hero-display > span:nth-child(3),
 .site-footer::before{
-  letter-spacing:-.02em;
-  font-kerning:normal;
+  color:#fff;
+  -webkit-text-fill-color:#fff;
+  -webkit-text-stroke:0;
+  text-shadow:none;
 }
 
 @media (max-width:900px){
@@ -214,11 +216,6 @@ body.is-entering .experience-transition__slice{
   .chapter-image,
   .aerial-card{
     cursor:auto;
-  }
-
-  .hero-display > span:nth-child(3),
-  .site-footer::before{
-    letter-spacing:-.01em;
   }
 }
 
