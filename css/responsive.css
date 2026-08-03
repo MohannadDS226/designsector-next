@@ -376,11 +376,25 @@ body.menu-open{
 }
 
 body.menu-open .site-header{
+  z-index:1001;
   height:var(--header-h);
   background:transparent;
+  color:var(--black);
   border-color:transparent;
   -webkit-backdrop-filter:none;
   backdrop-filter:none;
+}
+
+body.menu-open .site-header .brand-logo-dark{
+  opacity:1;
+}
+
+body.menu-open .site-header .brand-logo-light{
+  opacity:0;
+}
+
+body.menu-open .menu-toggle{
+  color:var(--black);
 }
 
 .mobile-nav > a{
