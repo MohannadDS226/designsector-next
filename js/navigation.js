@@ -4,6 +4,7 @@ DS.initNavigation = function () {
   const header = document.querySelector('[data-header]');
   const toggle = document.querySelector('[data-menu-toggle]');
   const mobileNav = document.querySelector('.mobile-nav[data-nav]');
+  const mobileClose = document.querySelector('[data-mobile-nav-close]');
 
   const megaMenu = document.querySelector('[data-mega-menu]');
   const megaTriggers = document.querySelectorAll('[data-mega-trigger]');
@@ -92,6 +93,8 @@ DS.initNavigation = function () {
     mobileNav.querySelectorAll('a').forEach((link) => {
       link.addEventListener('click', closeMobileMenu);
     });
+
+    mobileClose?.addEventListener('click', closeMobileMenu);
   }
 
   /* Desktop mega menu */
