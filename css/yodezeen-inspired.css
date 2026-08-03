@@ -1300,8 +1300,14 @@ body.is-entering .experience-transition{
 
   .site-footer::before{
     left:22px;
+    right:22px;
     bottom:128px;
-    font-size:18vw;
+    /* Fit the complete 13-character wordmark inside the device viewport.
+       Montserrat Bold measures roughly 7.5em here after letter-spacing;
+       the 7.95 divisor leaves a small safety margin at every width. */
+    font-size:min(100px,calc((100vw - 44px) / 7.95));
+    letter-spacing:-.07em;
+    text-align:center;
   }
 
   .footer-grid{
