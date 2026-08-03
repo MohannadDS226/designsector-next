@@ -377,10 +377,15 @@
   align-items:center;
   justify-content:space-between;
   pointer-events:none;
+  visibility:hidden;
 }
 
-.mobile-nav-brand,
-.mobile-nav-close{
+.mobile-nav.is-open .mobile-nav-header{
+  visibility:visible;
+}
+
+.mobile-nav.is-open .mobile-nav-brand,
+.mobile-nav.is-open .mobile-nav-close{
   pointer-events:auto;
 }
 
