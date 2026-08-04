@@ -78,27 +78,27 @@ DS.initCareersRoles = function () {
     {
       name: 'Visualization',
       slug: 'visualization',
-      scope: 'CGI / Film / Digital Craft',
+      scope: 'CGI / Film / AI / Digital Craft',
       roles: [
         {
           title: 'Junior Visualization Artist',
           level: 'Junior',
           description: 'Translate architecture, interiors, and landscape into compelling imagery through accurate modelling, materials, lighting, and post-production.',
-          requirements: ['Portfolio demonstrating composition, lighting, and material awareness.', 'Working knowledge of 3ds Max, Corona, and Photoshop.', 'Strong attention to scale, detail, and architectural accuracy.'],
+          requirements: ['Portfolio demonstrating composition, lighting, materials, and architectural accuracy.', 'Working knowledge of 3ds Max, Corona Renderer, and Photoshop, including modelling, UV mapping, materials, lighting, cameras, and render setup.', 'Working familiarity with Forest Pack and RailClone for vegetation, scattering, parametric geometry, and efficient scene assembly.', 'Ability to read architectural drawings and organise imported CAD or Revit geometry, assets, layers, naming, and file paths.', 'Familiarity with AI-assisted image enhancement and post-production while preserving the approved design, materials, and visual consistency.', 'Basic animation, Premiere Pro, After Effects, or Phoenix knowledge is an advantage.'],
           responsibilities: ['Prepare models, cameras, materials, lighting, and test renders.', 'Build scenes efficiently using studio standards and asset libraries.', 'Apply feedback accurately and support final post-production.']
         },
         {
           title: 'Senior Visualization Artist',
           level: 'Senior',
           description: 'Create campaign-quality architectural imagery and motion, shaping the visual story while maintaining design accuracy, realism, and consistent art direction.',
-          requirements: ['Advanced portfolio across architecture, interiors, or landscape.', 'Expert 3ds Max, Corona, Photoshop, and post-production workflow.', 'Strong art direction, problem-solving, and deadline management.'],
+          requirements: ['Advanced portfolio across architectural, interior, and landscape visualization, demonstrating strong art direction and campaign-quality delivery.', 'Advanced 3ds Max and Corona Renderer skills covering complex modelling, materials, lighting, cameras, render elements, animation, optimization, and troubleshooting.', 'Advanced Forest Pack and RailClone skills, with working Phoenix knowledge where simulations are required, plus disciplined proxy, vegetation, and high-poly asset management.', 'Advanced Photoshop post-production and working knowledge of Premiere Pro and After Effects for animation, editing, compositing, and final delivery.', 'Strong experience integrating AI-assisted enhancement, editing, and upscaling into production while protecting geometry, materials, design intent, and consistency across a full image set.', 'Confident handling of CAD or Revit imports, colour management, scene organization, network or distributed rendering, deadlines, and technical problem-solving.'],
           responsibilities: ['Own images from camera concept through final delivery.', 'Guide junior artists and review visual and technical quality.', 'Coordinate closely with designers to protect the approved design.']
         },
         {
           title: 'Visualization Team Leader',
           level: 'Team Leader',
           description: 'Lead the department’s creative and production direction, building a reliable pipeline for premium stills, animation, and emerging digital workflows.',
-          requirements: ['Proven leadership of architectural visualization teams and projects.', 'Expert eye for composition, lighting, realism, and storytelling.', 'Strong planning, review, mentoring, and cross-team communication.'],
+          requirements: ['Proven leadership of architectural visualization teams and complex still-image or animation projects.', 'Expert command of 3ds Max, Corona Renderer, Forest Pack, RailClone, and Photoshop, with strong oversight of Phoenix, Premiere Pro, After Effects, real-time, and AI-assisted workflows.', 'Ability to design and maintain production standards for scene templates, naming, folder structures, asset libraries, colour management, render elements, animation, and final delivery.', 'Strong knowledge of render optimization, network or distributed rendering, hardware and plugin planning, version control, backups, troubleshooting, and technical quality assurance.', 'Ability to evaluate and supervise AI tools responsibly, preserving design accuracy, authorship, material consistency, and campaign-wide visual continuity.', 'Expert art direction, resource planning, review, mentoring, deadline management, and cross-discipline communication.'],
           responsibilities: ['Set art direction, quality benchmarks, schedules, and workflows.', 'Allocate resources and lead reviews from briefing to delivery.', 'Develop the team, production pipeline, and responsible use of new tools.']
         }
       ]
