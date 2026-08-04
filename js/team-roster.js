@@ -14,6 +14,23 @@ DS.initTeamRoster = function () {
   const copy = section.querySelector('.partners-success-copy');
   const groups = Array.from(section.querySelectorAll('.partner-group'));
   const cards = Array.from(section.querySelectorAll('.partner-card'));
+  const cardStages = cards.map((card) => {
+    const existingStage = Array.from(card.children).find((child) =>
+      child.classList.contains('partner-card-stage')
+    );
+
+    if (existingStage) return existingStage;
+
+    const stage = document.createElement('div');
+    stage.className = 'partner-card-stage';
+
+    while (card.firstChild) {
+      stage.appendChild(card.firstChild);
+    }
+
+    card.appendChild(stage);
+    return stage;
+  });
   const surfaces = Array.from(section.querySelectorAll('.partner-portrait-surface'));
   const gsapRef = window.gsap;
   const triggerRef = window.ScrollTrigger;
@@ -112,6 +129,7 @@ DS.initTeamRoster = function () {
     gsapRef.set(groups, { opacity: 1, y: 0 });
     gsapRef.set(surfaces, { clearProps: 'transform' });
     gsapRef.set(cards, { clearProps: 'opacity,transform' });
+    gsapRef.set(cardStages, { clearProps: 'opacity,transform' });
 
     section.classList.add('mobile-arc-ready');
 
@@ -144,12 +162,13 @@ DS.initTeamRoster = function () {
           nearestIndex = index;
         }
 
-        card.style.setProperty('--partner-arc-y', `${(arc * 42).toFixed(2)}px`);
-        card.style.setProperty('--partner-arc-z', `${(-arc * 150).toFixed(2)}px`);
-        card.style.setProperty('--partner-arc-rotate-y', `${(-signedDistance * 13).toFixed(2)}deg`);
-        card.style.setProperty('--partner-arc-rotate-z', `${(signedDistance * 3.2).toFixed(2)}deg`);
-        card.style.setProperty('--partner-arc-scale', (1 - arc * .13).toFixed(3));
-        card.style.setProperty('--partner-arc-opacity', (1 - arc * .38).toFixed(3));
+        const stage = cardStages[index];
+        stage?.style.setProperty('--partner-arc-y', `${(arc * 42).toFixed(2)}px`);
+        stage?.style.setProperty('--partner-arc-z', `${(-arc * 150).toFixed(2)}px`);
+        stage?.style.setProperty('--partner-arc-rotate-y', `${(-signedDistance * 13).toFixed(2)}deg`);
+        stage?.style.setProperty('--partner-arc-rotate-z', `${(signedDistance * 3.2).toFixed(2)}deg`);
+        stage?.style.setProperty('--partner-arc-scale', (1 - arc * .13).toFixed(3));
+        stage?.style.setProperty('--partner-arc-opacity', (1 - arc * .38).toFixed(3));
         card.style.setProperty('--partner-arc-layer', String(20 - Math.round(distance * 10)));
       });
 
@@ -198,15 +217,16 @@ DS.initTeamRoster = function () {
       viewport.removeEventListener('keydown', handleKeydown);
       window.removeEventListener('resize', requestArcUpdate);
       section.classList.remove('mobile-arc-ready');
-      cards.forEach((card) => {
+      cards.forEach((card, index) => {
+        const stage = cardStages[index];
         card.removeAttribute('aria-current');
-        card.style.removeProperty('--partner-arc-y');
-        card.style.removeProperty('--partner-arc-z');
-        card.style.removeProperty('--partner-arc-rotate-y');
-        card.style.removeProperty('--partner-arc-rotate-z');
-        card.style.removeProperty('--partner-arc-scale');
-        card.style.removeProperty('--partner-arc-opacity');
         card.style.removeProperty('--partner-arc-layer');
+        stage?.style.removeProperty('--partner-arc-y');
+        stage?.style.removeProperty('--partner-arc-z');
+        stage?.style.removeProperty('--partner-arc-rotate-y');
+        stage?.style.removeProperty('--partner-arc-rotate-z');
+        stage?.style.removeProperty('--partner-arc-scale');
+        stage?.style.removeProperty('--partner-arc-opacity');
       });
     };
   });
