@@ -1,0 +1,352 @@
+/* Careers departments and role accordion */
+
+.roles-heading{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(260px,34vw);
+  gap:clamp(30px,6vw,100px);
+  align-items:end;
+}
+
+.roles-heading .editorial-kicker,
+.roles-heading h2{
+  grid-column:1;
+}
+
+.roles-heading h2{
+  max-width:1050px;
+}
+
+.roles-intro{
+  grid-column:2;
+  grid-row:1 / span 2;
+  max-width:520px;
+  margin:0 0 .2em auto;
+  color:rgba(5,5,5,.58);
+  font-size:clamp(15px,1.15vw,19px);
+  line-height:1.55;
+}
+
+.departments-list{
+  border-top:1px solid rgba(5,5,5,.22);
+}
+
+.department-group{
+  border-bottom:1px solid rgba(5,5,5,.22);
+}
+
+.department-header{
+  display:grid;
+  grid-template-columns:clamp(54px,6vw,90px) minmax(0,1fr);
+  gap:clamp(18px,2vw,32px);
+  align-items:start;
+  padding:clamp(45px,6vw,92px) 0 clamp(30px,4vw,56px);
+}
+
+.department-number,
+.role-index,
+.role-level,
+.role-detail-label{
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+
+.department-number{
+  padding-top:.75em;
+}
+
+.department-header h3{
+  margin:0;
+  font-size:clamp(42px,6.8vw,108px);
+  font-weight:600;
+  line-height:.82;
+  letter-spacing:-.065em;
+  text-transform:uppercase;
+}
+
+.department-header p{
+  margin:18px 0 0;
+  color:rgba(5,5,5,.48);
+  font-size:10px;
+  font-weight:700;
+  line-height:1.5;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+
+.department-roles{
+  border-top:1px solid rgba(5,5,5,.17);
+}
+
+.role-item{
+  border-bottom:1px solid rgba(5,5,5,.17);
+}
+
+.role-item:last-child{
+  border-bottom:0;
+}
+
+.role-item h4{
+  margin:0;
+}
+
+.role-trigger{
+  width:100%;
+  min-height:112px;
+  display:grid;
+  grid-template-columns:clamp(54px,6vw,90px) minmax(0,1fr) auto 52px;
+  gap:clamp(18px,2vw,32px);
+  align-items:center;
+  padding:20px 0;
+  border:0;
+  background:transparent;
+  color:inherit;
+  font:inherit;
+  text-align:left;
+  cursor:pointer;
+}
+
+.role-trigger:focus-visible{
+  outline:2px solid var(--ydz-ink,#080808);
+  outline-offset:6px;
+}
+
+.role-title{
+  min-width:0;
+  font-size:clamp(28px,3.5vw,58px);
+  font-weight:600;
+  line-height:.94;
+  letter-spacing:-.05em;
+  text-transform:uppercase;
+  transition:transform .4s var(--ease,cubic-bezier(.22,1,.36,1));
+}
+
+.role-level{
+  color:rgba(5,5,5,.48);
+  white-space:nowrap;
+}
+
+.role-toggle{
+  position:relative;
+  width:46px;
+  height:46px;
+  display:block;
+  border:1px solid rgba(5,5,5,.5);
+  border-radius:50%;
+  transition:background .35s ease,border-color .35s ease,transform .5s var(--ease,cubic-bezier(.22,1,.36,1));
+}
+
+.role-toggle i{
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:14px;
+  height:1px;
+  background:currentColor;
+  transform:translate(-50%,-50%);
+  transition:transform .4s var(--ease,cubic-bezier(.22,1,.36,1));
+}
+
+.role-toggle i:last-child{
+  transform:translate(-50%,-50%) rotate(90deg);
+}
+
+.role-trigger:hover .role-title{
+  transform:translateX(8px);
+}
+
+.role-trigger:hover .role-toggle,
+.role-trigger[aria-expanded="true"] .role-toggle{
+  background:var(--ydz-accent,#f5ea64);
+  border-color:var(--ydz-accent,#f5ea64);
+}
+
+.role-trigger[aria-expanded="true"] .role-toggle{
+  transform:rotate(180deg);
+}
+
+.role-trigger[aria-expanded="true"] .role-toggle i:last-child{
+  transform:translate(-50%,-50%) rotate(0deg);
+}
+
+.role-panel{
+  display:grid;
+  grid-template-rows:0fr;
+  visibility:hidden;
+  opacity:0;
+  transition:grid-template-rows .6s var(--ease,cubic-bezier(.22,1,.36,1)),opacity .35s ease,visibility 0s linear .6s;
+}
+
+.role-item.is-open .role-panel{
+  grid-template-rows:1fr;
+  visibility:visible;
+  opacity:1;
+  transition:grid-template-rows .6s var(--ease,cubic-bezier(.22,1,.36,1)),opacity .45s ease .08s,visibility 0s;
+}
+
+.role-panel-inner{
+  min-height:0;
+  overflow:hidden;
+  display:grid;
+  grid-template-columns:minmax(0,1.2fr) repeat(2,minmax(220px,.8fr));
+  gap:clamp(28px,5vw,82px);
+  padding:0 0 clamp(48px,6vw,86px) calc(clamp(54px,6vw,90px) + clamp(18px,2vw,32px));
+}
+
+.role-detail{
+  padding-top:8px;
+}
+
+.role-detail-label{
+  margin:0 0 20px;
+  color:rgba(5,5,5,.45);
+}
+
+.role-detail > p:not(.role-detail-label),
+.role-detail li{
+  font-size:clamp(15px,1.08vw,18px);
+  line-height:1.55;
+}
+
+.role-detail > p:not(.role-detail-label){
+  max-width:600px;
+  margin:0;
+  font-size:clamp(18px,1.45vw,24px);
+  line-height:1.48;
+}
+
+.role-detail ul{
+  display:grid;
+  gap:11px;
+  margin:0;
+  padding:0;
+  list-style:none;
+}
+
+.role-detail li{
+  position:relative;
+  padding-left:17px;
+  color:rgba(5,5,5,.68);
+}
+
+.role-detail li::before{
+  content:"";
+  position:absolute;
+  top:.72em;
+  left:0;
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:currentColor;
+}
+
+.roles-noscript{
+  padding:30px 0;
+}
+
+@media (max-width:980px){
+  .roles-heading{
+    display:block;
+  }
+
+  .roles-intro{
+    max-width:620px;
+    margin:28px 0 0;
+  }
+
+  .role-panel-inner{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .role-description{
+    grid-column:1 / -1;
+  }
+}
+
+@media (max-width:700px){
+  .department-header{
+    grid-template-columns:38px minmax(0,1fr);
+    gap:12px;
+    padding:52px 0 30px;
+  }
+
+  .department-header h3{
+    font-size:clamp(36px,11.5vw,56px);
+    line-height:.9;
+    letter-spacing:-.05em;
+  }
+
+  .department-header p{
+    margin-top:13px;
+  }
+
+  .role-trigger{
+    min-height:92px;
+    grid-template-columns:38px minmax(0,1fr) 42px;
+    gap:12px;
+    padding:18px 0;
+  }
+
+  .role-title{
+    font-size:clamp(24px,7.6vw,34px);
+    line-height:.98;
+    letter-spacing:-.035em;
+  }
+
+  .role-level{
+    grid-column:2;
+    grid-row:2;
+    margin-top:-5px;
+    white-space:normal;
+  }
+
+  .role-toggle{
+    grid-column:3;
+    grid-row:1 / span 2;
+    width:38px;
+    height:38px;
+  }
+
+  .role-panel-inner{
+    grid-template-columns:1fr;
+    gap:32px;
+    padding:2px 0 48px 50px;
+  }
+
+  .role-description{
+    grid-column:auto;
+  }
+
+  .role-detail > p:not(.role-detail-label){
+    font-size:18px;
+  }
+}
+
+@media (max-width:380px){
+  .department-header h3{
+    font-size:34px;
+  }
+
+  .role-trigger{
+    grid-template-columns:32px minmax(0,1fr) 38px;
+    gap:10px;
+  }
+
+  .role-title{
+    font-size:23px;
+  }
+
+  .role-panel-inner{
+    padding-left:42px;
+  }
+}
+
+@media (prefers-reduced-motion:reduce){
+  .role-title,
+  .role-toggle,
+  .role-toggle i,
+  .role-panel{
+    transition:none !important;
+  }
+}

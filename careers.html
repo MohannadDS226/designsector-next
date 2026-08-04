@@ -4,10 +4,10 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Careers | Design Sector</title>
-  <meta name="description" content="Explore careers and open applications across Design Sector architecture, interiors, landscape, construction, and visualization." />
+  <meta name="description" content="Explore careers across Design Sector architecture, interior design, visualization, construction, business development, marketing, and operations departments." />
   <meta name="theme-color" content="#050505" />
   <meta property="og:title" content="Careers | Design Sector" />
-  <meta property="og:description" content="Explore careers and open applications across Design Sector architecture, interiors, landscape, construction, and visualization." />
+  <meta property="og:description" content="Explore careers across Design Sector architecture, interior design, visualization, construction, business development, marketing, and operations departments." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="assets/images/studio/maadi-office-hero.jpg" />
   <link rel="icon" href="assets/favicon/favicon.ico" sizes="any" />
@@ -23,6 +23,7 @@
   <link rel="stylesheet" href="css/editorial-pages.css" />
   <link rel="stylesheet" href="css/yodezeen-inspired.css" />
   <link rel="stylesheet" href="css/yodezeen-motion.css" />
+  <link rel="stylesheet" href="css/careers-roles.css" />
 </head>
 <body class="editorial-page careers-page">
   <div class="site-loader" data-loader aria-hidden="true">
@@ -152,16 +153,14 @@
       </div>
     </section>
 
-    <section class="roles-section">
-      <div class="editorial-section-heading"><p class="editorial-kicker">Open Applications</p><h2>Disciplines we hear from.</h2></div>
-      <div class="roles-list">
-        <article class="role-row"><span>01</span><h3>Architects</h3><p>Design & Technical</p></article>
-        <article class="role-row"><span>02</span><h3>Interior Designers</h3><p>Concept & Detail</p></article>
-        <article class="role-row"><span>03</span><h3>Landscape Designers</h3><p>Place & Ecology</p></article>
-        <article class="role-row"><span>04</span><h3>Visualization Artists</h3><p>CGI & Motion</p></article>
-        <article class="role-row"><span>05</span><h3>Construction Professionals</h3><p>Site & Delivery</p></article>
-        <article class="role-row"><span>06</span><h3>Interns</h3><p>Emerging Talent</p></article>
+    <section class="roles-section" aria-labelledby="roles-heading">
+      <div class="editorial-section-heading roles-heading">
+        <p class="editorial-kicker">Open Applications</p>
+        <h2 id="roles-heading">Departments and roles.</h2>
+        <p class="roles-intro">Explore the level or specialism that matches your experience. Open any role to see its description, requirements, and responsibilities. Intern and graduate applications remain welcome across departments.</p>
       </div>
+      <div class="departments-list" data-careers-roles></div>
+      <noscript><p class="roles-noscript">Please enable JavaScript to explore role details.</p></noscript>
     </section>
 
     <section class="application-process">
@@ -222,6 +221,7 @@
   <script src="js/manifesto.js" defer></script>
   <script src="js/video-scrub.js" defer></script>
   <script src="js/offices.js" defer></script>
+  <script src="js/careers-roles.js" defer></script>
   <script src="js/site-experience.js" defer></script>
   <script src="js/yodezeen-motion.js" defer></script>
   <script src="js/main.js" defer></script>

@@ -314,7 +314,7 @@ DS.initYodezeenMotion = function () {
       '.discipline-people-card',
       '.team-method-card',
       '.careers-value',
-      '.role-row',
+      '.role-item',
       '.process-card',
       '.news-card',
       '.aerial-card',
