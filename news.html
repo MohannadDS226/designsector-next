@@ -23,6 +23,7 @@
   <link rel="stylesheet" href="css/editorial-pages.css" />
   <link rel="stylesheet" href="css/yodezeen-inspired.css" />
   <link rel="stylesheet" href="css/yodezeen-motion.css" />
+  <link rel="stylesheet" href="css/news-experience.css?v=20260804" />
 </head>
 <body class="editorial-page news-page">
   <div class="site-loader" data-loader aria-hidden="true">
@@ -186,6 +187,15 @@
             <a class="editorial-link" href="careers.html">More info</a>
           </div>
         </article>
+        <div class="news-autoplay" data-news-autoplay data-autoplay-duration="8000" role="timer" aria-label="Automatic story advance">
+          <div class="news-autoplay__meta">
+            <span data-news-timer-label>Next story</span>
+            <span class="news-autoplay__seconds" data-news-timer-seconds aria-hidden="true">08</span>
+          </div>
+          <span class="news-autoplay__track" aria-hidden="true">
+            <span class="news-autoplay__progress" data-news-timer-progress></span>
+          </span>
+        </div>
       </div>
       <div class="news-feed-column">
         <header class="news-intro">
@@ -194,7 +204,7 @@
           <p>Projects, milestones, studio culture, and the ideas shaping Design Sector across architecture, interiors, landscape, construction, and visualization.</p>
         </header>
         <div class="news-feed">
-        <article class="news-card is-active" data-news-card="0">
+        <article class="news-card is-active" id="porto-golf" data-news-card="0">
           <a class="news-card-image" href="project-porto-golf.html" aria-label="Read Porto Golf: A Landscape Story in Motion"><img src="assets/images/projects/porto-golf.webp" alt="Porto Golf landscape project" loading="lazy" /></a>
           <p class="news-card-meta">Project Spotlight / Landscape</p>
           <h2>Porto Golf: A Landscape Story in Motion</h2>
@@ -212,25 +222,25 @@
           <h2>Al Hamra Residence: Landscape Across Scales</h2>
           <a class="editorial-link" href="projects.html">More info</a>
         </article>
-        <article class="news-card" data-news-card="3">
+        <article class="news-card" id="mena-region" data-news-card="3">
           <a class="news-card-image" href="index.html#mena" aria-label="Read Designing Across the MENA Region"><img src="assets/images/offices/riyadh.jpg" alt="Design Sector work across the MENA region" loading="lazy" /></a>
           <p class="news-card-meta">Studio Journal / Regional Practice</p>
           <h2>Designing Across the MENA Region</h2>
           <a class="editorial-link" href="index.html#mena">More info</a>
         </article>
-        <article class="news-card" data-news-card="4">
+        <article class="news-card" id="integrated-process" data-news-card="4">
           <a class="news-card-image" href="index.html#studio" aria-label="Read One Integrated Process: From Idea to Built Place"><img src="assets/images/disciplines/visualization.jpg" alt="Design Sector visualization process" loading="lazy" /></a>
           <p class="news-card-meta">Studio Journal / Process</p>
           <h2>One Integrated Process: From Idea to Built Place</h2>
           <a class="editorial-link" href="index.html#studio">More info</a>
         </article>
-        <article class="news-card" data-news-card="5">
+        <article class="news-card" id="inside-studio" data-news-card="5">
           <a class="news-card-image" href="team.html" aria-label="Read Inside the Design Sector Studio"><img src="assets/images/studio/maadi-office-hero.jpg" alt="Design Sector studio in Cairo" loading="lazy" /></a>
           <p class="news-card-meta">Studio Journal / Culture</p>
           <h2>Inside the Design Sector Studio</h2>
           <a class="editorial-link" href="team.html">More info</a>
         </article>
-        <article class="news-card" data-news-card="6">
+        <article class="news-card" id="open-applications" data-news-card="6">
           <a class="news-card-image" href="careers.html" aria-label="Read Open Applications at Design Sector"><img src="assets/images/offices/Cairo.jpg" alt="Design Sector Cairo office" loading="lazy" /></a>
           <p class="news-card-meta">Careers / Join the Studio</p>
           <h2>Open Applications at Design Sector</h2>
@@ -287,7 +297,7 @@
   <script src="js/manifesto.js" defer></script>
   <script src="js/video-scrub.js" defer></script>
   <script src="js/offices.js" defer></script>
-  <script src="js/news.js" defer></script>
+  <script src="js/news.js?v=20260804" defer></script>
   <script src="js/site-experience.js" defer></script>
   <script src="js/yodezeen-motion.js" defer></script>
   <script src="js/main.js" defer></script>
