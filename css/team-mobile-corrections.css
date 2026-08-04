@@ -1,0 +1,58 @@
+/*
+  Final phone-only Team page corrections.
+  Loaded after the main Team stylesheet so these geometry fixes cannot be
+  hidden by earlier editorial or motion rules.
+*/
+
+@media (max-width: 520px) {
+  .team-page .team-intro,
+  .team-page .team-intro-grid,
+  .team-page .team-intro-grid > div:first-child {
+    width: 100%;
+    max-width: 100%;
+    overflow: visible;
+  }
+
+  .team-page .team-intro h2 {
+    width: 100%;
+    max-width: calc(100vw - 44px);
+    font-size: clamp(24px, 7.15vw, 30px) !important;
+    line-height: 1;
+    letter-spacing: -.055em;
+    overflow: visible;
+  }
+
+  .team-page .team-intro h2 .motion-word {
+    max-width: 100%;
+    white-space: nowrap;
+  }
+
+  .team-page .team-disciplines {
+    padding-top: 64px;
+  }
+
+  .team-page .team-disciplines .editorial-section-heading {
+    margin-bottom: 18px !important;
+  }
+
+  .team-page .discipline-people-grid {
+    gap: 14px;
+  }
+
+  .team-page .discipline-people-card,
+  .team-page .discipline-people-card:nth-child(n) {
+    height: auto;
+    min-height: 0;
+    margin: 0;
+    aspect-ratio: 4 / 5;
+  }
+
+  .team-page .discipline-people-card > img {
+    position: absolute;
+    inset: -5%;
+    width: 110%;
+    max-width: none;
+    height: 110%;
+    object-fit: cover;
+  }
+}
