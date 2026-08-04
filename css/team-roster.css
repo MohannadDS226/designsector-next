@@ -416,6 +416,31 @@
 }
 
 @media (max-width:520px){
+  /* Keep the complete Who We Are statement inside the phone column after
+     its words are split into inline motion spans. */
+  .team-intro h2{
+    width:100%;
+    max-width:100%;
+    font-size:clamp(28px,8.6vw,38px);
+    line-height:.94;
+    letter-spacing:-.05em;
+  }
+
+  /* The discipline cards use min-height on mobile, so a normal-flow image
+     cannot reliably resolve height:100%. Pinning it to the card makes every
+     image cover the full panel and keeps its title directly over the image. */
+  .team-disciplines .editorial-section-heading{
+    margin-bottom:28px;
+  }
+
+  .discipline-people-card img{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+
   .partners-success{
     --partner-card-width:78vw;
     --partner-card-gutter:11vw;
