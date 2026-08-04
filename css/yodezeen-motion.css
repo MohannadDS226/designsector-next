@@ -183,9 +183,10 @@ body.is-entering .experience-transition__slice{
   will-change:transform;
 }
 
-/* Use solid white for the two display treatments that previously used
+/* Use solid white for the display treatments that previously used
    text outlines. This removes the internal cross-strokes completely. */
 .hero-display > span:nth-child(3),
+.manifesto-copy .manifesto-line,
 .site-footer::before{
   color:#fff;
   -webkit-text-fill-color:#fff;

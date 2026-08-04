@@ -43,7 +43,7 @@ DS.initManifesto = function () {
   )
   .to(
     lines[0],
-    { y: moveTop, opacity: 0.45, ease: 'none' },
+    { y: moveTop, opacity: 1, ease: 'none' },
     0.42
   )
   .to(
@@ -53,7 +53,7 @@ DS.initManifesto = function () {
   )
   .to(
     lines[2],
-    { y: moveBottom, opacity: 0.45, ease: 'none' },
+    { y: moveBottom, opacity: 1, ease: 'none' },
     0.42
   );
 };
