@@ -133,11 +133,28 @@ DS.initTeamRoster = function () {
 
     section.classList.add('mobile-arc-ready');
 
+    const mobileHeading = document.createElement('div');
+    const mobileHeadingIndex = document.createElement('span');
+    const mobileHeadingTitle = document.createElement('h3');
+
+    mobileHeading.className = 'partners-mobile-group-heading';
+    mobileHeading.setAttribute('aria-live', 'polite');
+    mobileHeading.append(mobileHeadingIndex, mobileHeadingTitle);
+    viewport.before(mobileHeading);
+
     let frameId = 0;
     let activeIndex = 0;
     let arcActive = true;
 
     const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+
+    const updateMobileHeading = (card) => {
+      const source = card?.closest('.partner-group')?.querySelector('.partner-group-heading');
+      if (!source) return;
+
+      mobileHeadingIndex.textContent = source.querySelector('span')?.textContent?.trim() || '';
+      mobileHeadingTitle.textContent = source.querySelector('h3')?.textContent?.trim() || '';
+    };
 
     const updateArc = () => {
       frameId = 0;
@@ -176,6 +193,7 @@ DS.initTeamRoster = function () {
         cards[activeIndex]?.removeAttribute('aria-current');
         activeIndex = nearestIndex;
         cards[activeIndex]?.setAttribute('aria-current', 'true');
+        updateMobileHeading(cards[activeIndex]);
       }
     };
 
@@ -217,6 +235,7 @@ DS.initTeamRoster = function () {
       viewport.removeEventListener('keydown', handleKeydown);
       window.removeEventListener('resize', requestArcUpdate);
       section.classList.remove('mobile-arc-ready');
+      mobileHeading.remove();
       cards.forEach((card, index) => {
         const stage = cardStages[index];
         card.removeAttribute('aria-current');
