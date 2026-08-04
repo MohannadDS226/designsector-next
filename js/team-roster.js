@@ -111,23 +111,104 @@ DS.initTeamRoster = function () {
     gsapRef.set(track, { clearProps: 'transform' });
     gsapRef.set(groups, { opacity: 1, y: 0 });
     gsapRef.set(surfaces, { clearProps: 'transform' });
+    gsapRef.set(cards, { clearProps: 'opacity,transform' });
 
-    gsapRef.fromTo(
-      cards,
-      { opacity: 0, y: 36 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: .8,
-        stagger: .045,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: section,
-          start: 'top 76%',
-          once: true
+    section.classList.add('mobile-arc-ready');
+
+    let frameId = 0;
+    let activeIndex = 0;
+    let arcActive = true;
+
+    const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+
+    const updateArc = () => {
+      frameId = 0;
+
+      const viewportRect = viewport.getBoundingClientRect();
+      const viewportCenter = viewportRect.left + viewportRect.width / 2;
+      let nearestDistance = Number.POSITIVE_INFINITY;
+      let nearestIndex = activeIndex;
+
+      cards.forEach((card, index) => {
+        const cardRect = card.getBoundingClientRect();
+        const cardCenter = cardRect.left + cardRect.width / 2;
+        const centerDistance = cardCenter - viewportCenter;
+        const normalized = centerDistance / Math.max(cardRect.width * 1.04, 1);
+        const signedDistance = clamp(normalized, -1.35, 1.35);
+        const distance = Math.min(Math.abs(signedDistance), 1);
+        const arc = Math.pow(distance, 1.3);
+        const absoluteDistance = Math.abs(centerDistance);
+
+        if (absoluteDistance < nearestDistance) {
+          nearestDistance = absoluteDistance;
+          nearestIndex = index;
         }
+
+        card.style.setProperty('--partner-arc-y', `${(arc * 42).toFixed(2)}px`);
+        card.style.setProperty('--partner-arc-z', `${(-arc * 150).toFixed(2)}px`);
+        card.style.setProperty('--partner-arc-rotate-y', `${(-signedDistance * 13).toFixed(2)}deg`);
+        card.style.setProperty('--partner-arc-rotate-z', `${(signedDistance * 3.2).toFixed(2)}deg`);
+        card.style.setProperty('--partner-arc-scale', (1 - arc * .13).toFixed(3));
+        card.style.setProperty('--partner-arc-opacity', (1 - arc * .38).toFixed(3));
+        card.style.setProperty('--partner-arc-layer', String(20 - Math.round(distance * 10)));
+      });
+
+      if (nearestIndex !== activeIndex || !cards[nearestIndex]?.hasAttribute('aria-current')) {
+        cards[activeIndex]?.removeAttribute('aria-current');
+        activeIndex = nearestIndex;
+        cards[activeIndex]?.setAttribute('aria-current', 'true');
       }
-    );
+    };
+
+    const requestArcUpdate = () => {
+      if (!arcActive) return;
+      if (!frameId) frameId = window.requestAnimationFrame(updateArc);
+    };
+
+    const moveToCard = (index) => {
+      const target = cards[clamp(index, 0, cards.length - 1)];
+      if (!target) return;
+
+      const viewportRect = viewport.getBoundingClientRect();
+      const cardRect = target.getBoundingClientRect();
+      const offset = cardRect.left + cardRect.width / 2 - (viewportRect.left + viewportRect.width / 2);
+
+      viewport.scrollTo({
+        left: viewport.scrollLeft + offset,
+        behavior: 'smooth'
+      });
+    };
+
+    const handleKeydown = (event) => {
+      if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+      event.preventDefault();
+      moveToCard(activeIndex + (event.key === 'ArrowRight' ? 1 : -1));
+    };
+
+    viewport.addEventListener('scroll', requestArcUpdate, { passive: true });
+    viewport.addEventListener('keydown', handleKeydown);
+    window.addEventListener('resize', requestArcUpdate, { passive: true });
+    document.fonts?.ready?.then(requestArcUpdate);
+    window.requestAnimationFrame(updateArc);
+
+    return () => {
+      arcActive = false;
+      if (frameId) window.cancelAnimationFrame(frameId);
+      viewport.removeEventListener('scroll', requestArcUpdate);
+      viewport.removeEventListener('keydown', handleKeydown);
+      window.removeEventListener('resize', requestArcUpdate);
+      section.classList.remove('mobile-arc-ready');
+      cards.forEach((card) => {
+        card.removeAttribute('aria-current');
+        card.style.removeProperty('--partner-arc-y');
+        card.style.removeProperty('--partner-arc-z');
+        card.style.removeProperty('--partner-arc-rotate-y');
+        card.style.removeProperty('--partner-arc-rotate-z');
+        card.style.removeProperty('--partner-arc-scale');
+        card.style.removeProperty('--partner-arc-opacity');
+        card.style.removeProperty('--partner-arc-layer');
+      });
+    };
   });
 
   const refresh = () => triggerRef.refresh();
