@@ -122,13 +122,29 @@
   transition:transform .55s var(--ease);
 }
 
-.partner-portrait-placeholder{
+.partner-portrait-placeholder {
   position:relative;
   overflow:hidden;
   aspect-ratio:3/4;
   background:#151515;
   color:var(--white);
   isolation:isolate;
+}
+
+.partner-portrait-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform .9s var(--ease), filter .7s var(--ease);
+}
+
+.partner-card:hover .partner-portrait-image {
+  transform: scale(1.035);
+  filter: contrast(1.05);
 }
 
 .partner-portrait-surface{
