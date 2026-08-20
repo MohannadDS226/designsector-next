@@ -73,13 +73,19 @@ DS.initMenaMap = function () {
     return;
   }
 
-  const observer = new IntersectionObserver((entries) => {
-    if (!entries.some((entry) => entry.isIntersecting)) return;
-    timeline.play();
-    observer.disconnect();
-  }, { threshold: .85 });
+  const playWhenCentered = () => {
+    const bounds = map.getBoundingClientRect();
+    const mapCenter = bounds.top + (bounds.height / 2);
+    if (mapCenter > window.innerHeight / 2) return;
 
-  observer.observe(map);
+    timeline.play();
+    window.removeEventListener('scroll', playWhenCentered);
+    window.removeEventListener('resize', playWhenCentered);
+  };
+
+  window.addEventListener('scroll', playWhenCentered, { passive: true });
+  window.addEventListener('resize', playWhenCentered);
+  playWhenCentered();
 };
 
 window.addEventListener('DOMContentLoaded', () => {
