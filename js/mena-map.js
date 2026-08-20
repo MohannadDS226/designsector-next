@@ -62,6 +62,12 @@ DS.initMenaMap = function () {
     }, '>-0.24');
 
   let hasPlayed = false;
+  const cleanupCenterCheck = () => {
+    window.DS.lenis?.off?.('scroll', playWhenCentered);
+    window.removeEventListener('scroll', playWhenCentered);
+    window.removeEventListener('resize', playWhenCentered);
+  };
+
   const playWhenCentered = () => {
     if (hasPlayed) return;
 
@@ -70,14 +76,19 @@ DS.initMenaMap = function () {
     if (mapCenter > window.innerHeight / 2) return;
 
     hasPlayed = true;
-    window.clearInterval(centerCheckId);
+    cleanupCenterCheck();
     timeline.play();
   };
 
-  const centerCheckId = window.setInterval(playWhenCentered, 100);
+  if (window.DS.lenis?.on) {
+    window.DS.lenis.on('scroll', playWhenCentered);
+  } else {
+    window.addEventListener('scroll', playWhenCentered, { passive: true });
+  }
+  window.addEventListener('resize', playWhenCentered);
   playWhenCentered();
 };
 
 window.addEventListener('DOMContentLoaded', () => {
-  DS.initMenaMap?.();
+  window.setTimeout(() => DS.initMenaMap?.(), 0);
 });
