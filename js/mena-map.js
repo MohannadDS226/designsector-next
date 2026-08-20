@@ -6,7 +6,6 @@ DS.initMenaMap = function () {
 
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const gsapRef = window.gsap;
-  const triggerRef = window.ScrollTrigger;
 
   if (reducedMotion || !gsapRef) {
     map.classList.add('is-static');
@@ -23,7 +22,6 @@ DS.initMenaMap = function () {
 
   if (!egypt || !saudi || !egyptLabel || !saudiLabel || !route) return;
 
-  if (triggerRef) gsapRef.registerPlugin(triggerRef);
   map.classList.add('is-animated');
 
   [egypt, saudi].forEach((country) => {
@@ -63,21 +61,15 @@ DS.initMenaMap = function () {
       ease: 'back.out(1.8)'
     }, '>-0.24');
 
-  if (triggerRef) {
-    triggerRef.create({
-      trigger: map,
-      start: 'center center',
-      once: true,
-      onEnter: () => timeline.play()
-    });
-    return;
-  }
-
+  let hasPlayed = false;
   const playWhenCentered = () => {
+    if (hasPlayed) return;
+
     const bounds = map.getBoundingClientRect();
     const mapCenter = bounds.top + (bounds.height / 2);
     if (mapCenter > window.innerHeight / 2) return;
 
+    hasPlayed = true;
     timeline.play();
     window.removeEventListener('scroll', playWhenCentered);
     window.removeEventListener('resize', playWhenCentered);
