@@ -49,7 +49,7 @@ DS.initMenaMap = function () {
 
   timeline
     .to(grid, { autoAlpha: 1, duration: .65 })
-    .to(egypt, { strokeDashoffset: 0, duration: 3.2, ease: 'power1.inOut' }, .2)
+    .to(egypt, { strokeDashoffset: 0, duration: 3.2, ease: 'power1.inOut' }, .85)
     .to(egyptLabel, { autoAlpha: 1, y: 0, duration: .6 }, '+=.18')
     .to(saudi, { strokeDashoffset: 0, duration: 3.4, ease: 'power1.inOut' }, '+=.28')
     .to(saudiLabel, { autoAlpha: 1, y: 0, duration: .6 }, '+=.18')
@@ -66,7 +66,7 @@ DS.initMenaMap = function () {
   if (triggerRef) {
     triggerRef.create({
       trigger: map,
-      start: 'top 55%',
+      start: 'center center',
       once: true,
       onEnter: () => timeline.play()
     });
@@ -77,7 +77,7 @@ DS.initMenaMap = function () {
     if (!entries.some((entry) => entry.isIntersecting)) return;
     timeline.play();
     observer.disconnect();
-  }, { threshold: .5 });
+  }, { threshold: .85 });
 
   observer.observe(map);
 };
