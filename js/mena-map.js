@@ -66,7 +66,7 @@ DS.initMenaMap = function () {
   if (triggerRef) {
     triggerRef.create({
       trigger: map,
-      start: 'top 78%',
+      start: 'top 55%',
       once: true,
       onEnter: () => timeline.play()
     });
@@ -77,7 +77,7 @@ DS.initMenaMap = function () {
     if (!entries.some((entry) => entry.isIntersecting)) return;
     timeline.play();
     observer.disconnect();
-  }, { threshold: .28 });
+  }, { threshold: .5 });
 
   observer.observe(map);
 };
