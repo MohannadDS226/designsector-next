@@ -1,0 +1,86 @@
+.mena-map {
+  width: 100%;
+  aspect-ratio: 5 / 3;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid rgba(5, 5, 5, .08);
+  background: var(--off, #f3f0f1);
+  opacity: 1;
+}
+
+.mena-map__svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.mena-map__grid path {
+  fill: none;
+  stroke: #c8c4c2;
+  stroke-width: 1;
+  opacity: .34;
+  vector-effect: non-scaling-stroke;
+}
+
+.mena-map__country {
+  fill: none;
+  stroke: #050505;
+  stroke-width: 1.45;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.mena-map__route {
+  fill: none;
+  stroke: #e9dc42;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: 7 11;
+  vector-effect: non-scaling-stroke;
+}
+
+.mena-map__marker-core {
+  fill: #f5ea64;
+}
+
+.mena-map__marker-halo {
+  fill: none;
+  stroke: #f5ea64;
+  stroke-width: 1.5;
+  opacity: .35;
+  vector-effect: non-scaling-stroke;
+}
+
+.mena-map__label {
+  fill: #050505;
+  font-family: Montserrat, Arial, sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-anchor: middle;
+}
+
+.mena-map.is-animated .mena-map__country,
+.mena-map.is-animated .mena-map__route,
+.mena-map.is-animated .mena-map__label,
+.mena-map.is-animated .mena-map__marker {
+  will-change: stroke-dashoffset, opacity, transform;
+}
+
+@media (max-width: 760px) {
+  .mena-map {
+    min-height: 0;
+    aspect-ratio: 5 / 3;
+  }
+
+  .mena-map__label {
+    font-size: 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mena-map__marker-halo {
+    opacity: .2;
+  }
+}
