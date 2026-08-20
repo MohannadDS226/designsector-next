@@ -49,17 +49,17 @@ DS.initMenaMap = function () {
 
   timeline
     .to(grid, { autoAlpha: 1, duration: .65 })
-    .to(egypt, { strokeDashoffset: 0, duration: 1.15, ease: 'power2.inOut' }, .12)
-    .to(egyptLabel, { autoAlpha: 1, y: 0, duration: .42 }, '>-0.08')
-    .to(saudi, { strokeDashoffset: 0, duration: 1.3, ease: 'power2.inOut' }, '+=.08')
-    .to(saudiLabel, { autoAlpha: 1, y: 0, duration: .42 }, '>-0.08')
-    .to(route, { strokeDashoffset: 0, duration: .8, ease: 'power1.inOut' }, '+=.08')
+    .to(egypt, { strokeDashoffset: 0, duration: 3.2, ease: 'power1.inOut' }, .2)
+    .to(egyptLabel, { autoAlpha: 1, y: 0, duration: .6 }, '+=.18')
+    .to(saudi, { strokeDashoffset: 0, duration: 3.4, ease: 'power1.inOut' }, '+=.28')
+    .to(saudiLabel, { autoAlpha: 1, y: 0, duration: .6 }, '+=.18')
+    .to(route, { strokeDashoffset: 0, duration: 1.4, ease: 'power1.inOut' }, '+=.3')
     .set(route, { clearProps: 'strokeDasharray,strokeDashoffset' })
     .to(markers, {
       autoAlpha: 1,
       scale: 1,
-      duration: .48,
-      stagger: .12,
+      duration: .62,
+      stagger: .16,
       ease: 'back.out(1.8)'
     }, '>-0.24');
 
